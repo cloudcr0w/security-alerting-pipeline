@@ -1,0 +1,5 @@
+🚨 [SECURITY ALERT] IAM User Created
+User: test-user
+Time: 2025-03-21T12:34:00Z
+Event: CreateUser
+Resource: arn:aws:iam::123456789012:user/test-user
