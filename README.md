@@ -62,6 +62,14 @@ terraform apply
 Then confirm the subscription in the email you receive from SNS.
 ```
 
+## 🧪 How to Test
+
+1. Apply Terraform configuration
+2. Confirm SNS subscription via email
+3. Trigger event (e.g., create an IAM user)
+4. Check your email inbox for an alert
+
+
 📌 Next Steps (Ideas for Expansion)
 Add support for more events (e.g., S3 bucket policy changes, root login)
 Integrate with Slack or Discord via webhook
