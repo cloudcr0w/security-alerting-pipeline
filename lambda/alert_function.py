@@ -1,21 +1,31 @@
-
-import os
-import boto3
 import json
+import boto3
+import os
 
 def lambda_handler(event, context):
     sns = boto3.client('sns')
     topic_arn = os.environ['SNS_TOPIC_ARN']
-    
-    message = json.dumps(event, indent=2)
-    
+
+    user = event['detail']['userIdentity'].get('userName', 'unknown-user')
+    time = event['detail'].get('eventTime', 'unknown-time')
+    ip = event['detail'].get('sourceIPAddress', 'unknown-ip')
+    event_name = event['detail'].get('eventName', 'unknown-event')
+
+    message = f"""
+🚨 [SECURITY ALERT]
+Event: {event_name}
+User: {user}
+Time: {time}
+Source IP: {ip}
+"""
+
     sns.publish(
         TopicArn=topic_arn,
-        Subject='[SECURITY ALERT] IAM CreateUser',
-        Message=message
+        Subject=f"[SECURITY ALERT] {event_name}",
+        Message=message.strip()
     )
-    
+
     return {
         'statusCode': 200,
-        'body': 'Alert sent via SNS.'
+        'body': 'Alert sent.'
     }
