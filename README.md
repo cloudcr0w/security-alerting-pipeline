@@ -42,12 +42,26 @@ Threat Findings
 4. Lambda formats the alert and publishes it to an SNS topic.
 5. SNS sends an email notification to the configured address.
 
----
+## 🛡️ GuardDuty Integration (in progress)
+
+The project will include a GuardDuty-based detection system for threats such as:
+- Brute-force SSH attacks
+- Malicious IP communication
+- Unauthorized EC2 access
+
+Current progress:
+- ✅ GuardDuty detector created
+- 🔄 EventBridge rule and alert forwarding – in development
+
 
 ## 🧪 Demo Alert Example
- [SECURITY ALERT] IAM User Created User: jansmith Time: 2025-03-21T13:22:00Z Event: CreateUser Resource: arn:aws:iam::123456789012:user/jansmith
 
- ---
+🚨 [SECURITY ALERT] IAM User Created
+User: jansmith
+Time: 2025-03-21T13:22:00Z
+Event: CreateUser
+Resource: arn:aws:iam::123456789012:user/jansmith
+
 
 ## 📦 Deploying the Pipeline
 
@@ -78,6 +92,8 @@ Add support for more events (e.g., S3 bucket policy changes, root login)
 Integrate with Slack or Discord via webhook
 Connect with AWS Security Hub for aggregated security findings
 Add log aggregation or storage with CloudWatch Logs or S3
-🧠 Author
-Adam Wrona – aspiring DevSecOps / Cloud Security Engineer
-LinkedIn • GitHub
+
+## 🧠 Author
+
+**Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
+🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
