@@ -53,6 +53,8 @@ Current progress:
 - ✅ GuardDuty detector created
 - 🔄 EventBridge rule and alert forwarding – in development
 
+##  Testing GuardDuty Events (in works )
+
 
 ## 🧪 Demo Alert Example
 
