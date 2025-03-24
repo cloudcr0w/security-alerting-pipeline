@@ -1,0 +1,15 @@
+{
+    "detail-type": "GuardDuty Finding",
+    "source": "aws.guardduty",
+    "detail": {
+      "severity": 5.0,
+      "title": "SSH brute force attack detected",
+      "type": "UnauthorizedAccess:EC2/SSHBruteForce",
+      "resource": {
+        "instanceDetails": {
+          "instanceId": "i-0abcd1234efgh5678"
+        }
+      }
+    }
+  }
+  
