@@ -1,7 +1,0 @@
-# terraform.tfvars.example
-
-# AWS region where resources will be deployed
-region = "us-east-1"
-
-# Email address that will receive security alerts
-alert_email = "your-email@example.com"
