@@ -98,13 +98,15 @@ Then confirm the subscription in the email you receive from SNS.
 3. Trigger event (e.g., create an IAM user)
 4. Check your email inbox for an alert
 
-## 🧪 Sample Event
+
+## 📄 Sample Configuration & Event Files
 
 This project includes sample files to help you test and configure the pipeline:
 
-- `terraform.tfvars.example` – template for user configuration (region, alert email)
-- `sample-event.json` – mock IAM CreateUser event for Lambda testing
-- `sample-guardduty-event.json` – mock GuardDuty finding for future integration
+- `samples/terraform.tfvars.example` – template for user configuration (region, alert email)
+- `samples/sample-event.json` – mock IAM CreateUser event for Lambda testing
+- `samples/sample-guardduty-event.json` – mock GuardDuty finding for future integration
+ion
 
 📌 Next Steps (Ideas for Expansion)
 Add support for more events (e.g., S3 bucket policy changes, root login)
