@@ -100,7 +100,11 @@ Then confirm the subscription in the email you receive from SNS.
 
 ## 🧪 Sample Event
 
-Use the provided `sample-event.json` file to test the Lambda function directly in the AWS console.
+This project includes sample files to help you test and configure the pipeline:
+
+- `terraform.tfvars.example` – template for user configuration (region, alert email)
+- `sample-event.json` – mock IAM CreateUser event for Lambda testing
+- `sample-guardduty-event.json` – mock GuardDuty finding for future integration
 
 📌 Next Steps (Ideas for Expansion)
 Add support for more events (e.g., S3 bucket policy changes, root login)
