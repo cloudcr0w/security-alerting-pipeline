@@ -64,6 +64,19 @@ Time: 2025-03-21T13:22:00Z
 Event: CreateUser
 Resource: arn:aws:iam::123456789012:user/jansmith
 
+## ⚙️ Configuration with terraform.tfvars
+
+You can create a `terraform.tfvars` file to store your input variables:
+
+```hcl
+region      = "us-east-1"
+alert_email = "your-email@example.com"
+```
+Then run Terraform like this:
+```bash
+terraform apply -var-file="terraform.tfvars"
+```
+This keeps your configuration clean and reusable.
 
 ## 📦 Deploying the Pipeline
 
