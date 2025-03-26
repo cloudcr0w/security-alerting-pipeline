@@ -25,3 +25,16 @@ resource "aws_lambda_permission" "permission_for_lambda" {
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.guardduty_finding.arn
 }
+
+resource "aws_cloudwatch_event_target" "guardduty_alert_function" {
+  rule = aws_cloudwatch_event_rule.guardduty_finding.name
+  arn  = aws_lambda_function.guardduty_alert_function.arn
+}
+
+resource "aws_lambda_permission" "gd_allow_eventbridge" {
+  function_name = aws_lambda_function.guardduty_alert_function.function_name
+  action        = "lambda:InvokeFunction"
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_target.guardduty_alert_function.arn
+
+}
