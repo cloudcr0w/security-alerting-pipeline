@@ -1,5 +1,7 @@
 # 🛡️ AWS Security Alerting Pipeline
 
+> 🛡️ AWS-native alerting system for IAM and GuardDuty events – built with Terraform, Lambda and SNS
+
 This project demonstrates a simple and effective AWS security alerting pipeline that detects IAM security events and sends notifications via email using AWS services.
 
 ## 🚀 Project Overview
@@ -19,6 +21,7 @@ The pipeline captures specific security-related events, such as the creation of 
 - **Amazon EventBridge** – for filtering specific security events
 - **AWS Lambda (Python)** – for processing and formatting alert messages
 - **Amazon SNS** – for sending email notifications
+- **AWS GuardDuty** - for safety
 
 ---
 
@@ -53,7 +56,8 @@ Current progress:
 - ✅ GuardDuty detector created
 - 🔄 EventBridge rule and alert forwarding – in development
 
-##  Testing GuardDuty Events (in works )
+## 🧪 Testing GuardDuty Events *(in progress)*
+
 
 
 ## 🧪 Demo Alert Example
@@ -106,13 +110,15 @@ This project includes sample files to help you test and configure the pipeline:
 - `samples/terraform.tfvars.example` – template for user configuration (region, alert email)
 - `samples/sample-event.json` – mock IAM CreateUser event for Lambda testing
 - `samples/sample-guardduty-event.json` – mock GuardDuty finding for future integration
-ion
 
-📌 Next Steps (Ideas for Expansion)
-Add support for more events (e.g., S3 bucket policy changes, root login)
-Integrate with Slack or Discord via webhook
-Connect with AWS Security Hub for aggregated security findings
-Add log aggregation or storage with CloudWatch Logs or S3
+
+## 🔭 Next Steps (Ideas for Expansion)
+
+- Add support for more events (e.g., S3 bucket policy changes, root login)
+- Integrate with Slack or Discord via webhook
+- Connect with AWS Security Hub for aggregated security findings
+- Add log aggregation or storage with CloudWatch Logs or S3
+
 
 ## 🧠 Author
 
