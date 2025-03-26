@@ -2,7 +2,7 @@
 
 resource "aws_iam_role" "lambda_exec_role" {
   name = "lambda_exec_role"
-  assume_role_policy = jsondecode({
+  assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
       Action = "sts:AssumeRole",
@@ -18,7 +18,7 @@ resource "aws_iam_role_policy" "lambda_publish_sns" {
   name = "lambda_publish_sns"
   role = aws_iam_role.lambda_exec_role.id
 
-  policy = jsondecode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
       Effect   = "Allow",

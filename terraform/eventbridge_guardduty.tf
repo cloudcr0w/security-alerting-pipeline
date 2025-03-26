@@ -13,3 +13,15 @@ resource "aws_cloudwatch_event_rule" "guardduty_finding" {
     }
   })
 }
+
+resource "aws_cloudwatch_event_target" "guardduty_target" {
+  rule = aws_cloudwatch_event_rule.guardduty_finding.name
+  arn  = aws_lambda_function.alert_function.arn
+}
+
+resource "aws_lambda_permission" "permission_for_lambda" {
+  function_name = aws_lambda_function.alert_function.function_name
+  action        = "lambda:InvokeFunction"
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.guardduty_finding.arn
+}
