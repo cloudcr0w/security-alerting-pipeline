@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  alert-receiver:
+    build:
+      context: ./alert-receiver
+    ports:
+      - "5000:5000"
+    container_name: alert-receiver
