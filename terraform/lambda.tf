@@ -13,6 +13,11 @@ resource "aws_lambda_function" "alert_function" {
       SNS_TOPIC_ARN = aws_sns_topic.security_alerts.arn
     }
   }
+  tags = {
+    Project     = "SecurityAlertingPipeline"
+    Environment = "dev"
+  }
+
 }
 
 resource "aws_lambda_function" "guardduty_alert_function" {
@@ -28,4 +33,9 @@ resource "aws_lambda_function" "guardduty_alert_function" {
       SNS_TOPIC_ARN = aws_sns_topic.security_alerts.arn
     }
   }
+  tags = {
+    Project     = "SecurityAlertingPipeline"
+    Environment = "dev"
+  }
+
 }
