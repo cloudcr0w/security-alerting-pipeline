@@ -7,3 +7,7 @@ output "guardduty_detector_id" {
 output "guardduty_rule_arn" {
   value = aws_cloudwatch_event_rule.guardduty_finding.arn
 }
+output "guardduty_lambda_arn" {
+  value = aws_lambda_function.guardduty_alert_function.arn
+  description = "ARN of the Lambda handling GuardDuty alerts"
+}
