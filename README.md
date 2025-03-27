@@ -112,6 +112,17 @@ This project includes sample files to help you test and configure the pipeline:
 - `samples/sample-guardduty-event.json` – mock GuardDuty finding for future integration
 
 
+## 🧠 What I Learned
+
+- How to create a modular, event-driven security pipeline using AWS services
+- How to use Terraform to define and deploy infrastructure as code
+- How to trigger Lambda functions based on specific CloudTrail and GuardDuty events
+- How to send formatted alerts via SNS and use environment variables
+- How to split Terraform into logical files and add outputs for clarity
+- First time using GuardDuty in a real project context
+- I now understand the purpose of outputs and tags in Terraform
+
+
 ## 🔭 Next Steps (Ideas for Expansion)
 
 - Add support for more events (e.g., S3 bucket policy changes, root login)
