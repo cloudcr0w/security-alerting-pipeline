@@ -122,9 +122,25 @@ This project includes sample files to help you test and configure the pipeline:
 - First time using GuardDuty in a real project context
 - I now understand the purpose of outputs and tags in Terraform
 
-## 🐳 Container-based Alert Receiver (Docker + K8s)
+## 🐳 Docker & Kubernetes Integration
 
-As an additional learning exercise, this project includes a simple containerized alert receiver built with Flask.
+This project includes a lightweight containerized alert receiver built with Flask, which simulates external alert processing.
+
+| Component     | Description |
+|---------------|-------------|
+| 🐳 Dockerfile  | Located in `alert-receiver/`. Builds the container image. |
+| 🛠️ docker-compose | Defines how to run the alert receiver locally. |
+| ☸️ Kubernetes  | `k8s/deployment.yaml` contains a basic K8s deployment with a service. |
+
+You can run the container using:
+
+```bash
+docker-compose up
+```
+Or deploy it to Kubernetes using:
+```bash
+kubectl apply -f k8s/deployment.yaml
+```
 
 ### 🔧 What it does:
 - Runs a minimal web server that listens for incoming alerts via HTTP POST
