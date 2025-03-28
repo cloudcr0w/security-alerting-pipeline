@@ -1,0 +1,39 @@
+.
+├── .gitignore
+├── LICENSE
+├── NOTES.md
+├── README.md
+├── alert-demo.txt
+├── alert-receiver
+│   ├── Dockerfile
+│   ├── main.py
+│   └── requirements.txt
+├── ci-notes.md
+├── docker-compose.yml
+├── k8s
+│   └── deployment.yaml
+├── lambda
+│   ├── alert_function.py
+│   ├── alert_function.zip
+│   ├── guardduty_alert_function.py
+│   └── guardduty_alert_function.zip
+├── samples
+│   ├── sample-event.json
+│   ├── sample-guardduty-event.json
+│   └── terraform.tfvars.example
+├── terraform
+│   ├── .terraform.lock.hcl
+│   ├── cloudtrail.tf
+│   ├── eventbridge.tf
+│   ├── eventbridge_guardduty.tf
+│   ├── guardduty.tf
+│   ├── iam.tf
+│   ├── lambda.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── sns.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+└── tree.txt
+
+5 directories, 31 files
