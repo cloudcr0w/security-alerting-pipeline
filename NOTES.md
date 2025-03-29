@@ -19,3 +19,10 @@ Still working on, trying to improve and learn
 
 - How would I route alerts to different recipients based on severity?
 - What would CloudWatch Logs integration look like?
+
+# 📝 Weekend Plan (March 29–30)
+
+- ✅ Clean Docker image naming (e.g., add `tag`)
+- 🔲 Try running GuardDuty Lambda with sample alert
+- 🔲 Add README to samples/ folder
+- 🔲 Reflect on CI/CD ideas (what could I automate?)
