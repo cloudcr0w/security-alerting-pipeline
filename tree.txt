@@ -11,6 +11,7 @@
 ├── ci-notes.md
 ├── docker-compose.yml
 ├── k8s
+│   ├── README.md
 │   └── deployment.yaml
 ├── lambda
 │   ├── alert_function.py
@@ -18,6 +19,7 @@
 │   ├── guardduty_alert_function.py
 │   └── guardduty_alert_function.zip
 ├── samples
+│   ├── README.md
 │   ├── sample-event.json
 │   ├── sample-guardduty-event.json
 │   └── terraform.tfvars.example
@@ -36,4 +38,4 @@
 │   └── variables.tf
 └── tree.txt
 
-5 directories, 31 files
+5 directories, 33 files
