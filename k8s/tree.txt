@@ -1,0 +1,6 @@
+k8s
+├── README.md
+├── deployment.yaml
+└── tree.txt
+
+0 directories, 3 files
