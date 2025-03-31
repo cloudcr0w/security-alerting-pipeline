@@ -94,6 +94,14 @@ terraform init
 terraform apply
 Then confirm the subscription in the email you receive from SNS.
 ```
+## 🐍 Alert Receiver (Flask)
+
+A simple Flask app running in a container, used to simulate alert processing for security pipelines.
+
+It listens on `/alert` for POST requests and prints received data to the console.
+
+Used for testing containerization and future K8s deployments.
+
 
 ## 🧪 How to Test
 
