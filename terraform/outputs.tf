@@ -8,15 +8,15 @@ output "guardduty_rule_arn" {
   value = aws_cloudwatch_event_rule.guardduty_finding.arn
 }
 output "guardduty_lambda_arn" {
-  value = aws_lambda_function.guardduty_alert_function.arn
+  value       = aws_lambda_function.guardduty_alert_function.arn
   description = "ARN of the Lambda handling GuardDuty alerts"
 }
 output "alert_lambda_version" {
-  value = aws_lambda_function.alert_function.version
+  value       = aws_lambda_function.alert_function.version
   description = "version od the IAM alert lambda function"
 }
 output "guardduty_lambda_version" {
-  value = aws_lambda_function.guardduty_alert_function.version
+  value       = aws_lambda_function.guardduty_alert_function.version
   description = "version of GuardDuty alert Lambda function"
-  
+
 }
