@@ -102,6 +102,32 @@ It listens on `/alert` for POST requests and prints received data to the console
 
 Used for testing containerization and future K8s deployments.
 
+## ✅ GuardDuty Lambda Test Info
+
+You can test the `guardduty_alert_function` manually using AWS CLI with a prepared sample event:
+
+```bash
+aws lambda invoke \
+  --function-name guardduty_alert_function \
+  --payload file://test-events/guardduty-ssh-brute.json \
+  --cli-binary-format raw-in-base64-out \
+  output.json
+```
+Make sure:
+
+The Lambda has proper IAM permissions for CloudWatch Logs and SNS
+
+You confirmed the SNS email subscription
+
+Logs are available under /aws/lambda/guardduty_alert_function in CloudWatch
+
+Successful execution returns:
+```bash
+{
+  "statusCode": 200,
+  "body": "GuardDuty alert processed"
+}
+```
 
 ## 🧪 How to Test
 
