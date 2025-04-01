@@ -20,3 +20,6 @@ Thumbs.db
 # VSCode / IDE
 .vscode/
 .idea/
+
+# AWS Lambda test output
+output.json
