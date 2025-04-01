@@ -15,3 +15,8 @@ output "alert_lambda_version" {
   value = aws_lambda_function.alert_function.version
   description = "version od the IAM alert lambda function"
 }
+output "guardduty_lambda_version" {
+  value = aws_lambda_function.guardduty_alert_function.version
+  description = "version of GuardDuty alert Lambda function"
+  
+}
