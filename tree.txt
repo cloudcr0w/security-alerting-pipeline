@@ -12,12 +12,14 @@
 ├── docker-compose.yml
 ├── k8s
 │   ├── README.md
-│   └── deployment.yaml
+│   ├── deployment.yaml
+│   └── tree.txt
 ├── lambda
 │   ├── alert_function.py
 │   ├── alert_function.zip
 │   ├── guardduty_alert_function.py
 │   └── guardduty_alert_function.zip
+├── output.json
 ├── samples
 │   ├── README.md
 │   ├── sample-event.json
@@ -25,6 +27,7 @@
 │   └── terraform.tfvars.example
 ├── terraform
 │   ├── .terraform.lock.hcl
+│   ├── README.md
 │   ├── cloudtrail.tf
 │   ├── eventbridge.tf
 │   ├── eventbridge_guardduty.tf
@@ -34,8 +37,13 @@
 │   ├── main.tf
 │   ├── outputs.tf
 │   ├── sns.tf
+│   ├── terraform.tfstate
+│   ├── terraform.tfstate.backup
 │   ├── terraform.tfvars
 │   └── variables.tf
+├── terraform.tfstate
+├── test-events
+│   └── guardduty-ssh-brute.json
 └── tree.txt
 
-5 directories, 33 files
+6 directories, 40 files
