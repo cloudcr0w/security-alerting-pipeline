@@ -24,3 +24,26 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.iam_create_user.arn
 }
+
+resource "aws_cloudwatch_event_rule" "root_login" {
+  name        = "root-login-alert"
+  description = "Detect root account login without MFA"
+  event_pattern = jsonencode({
+    source        = ["aws.signin"],
+    "detail-type" = ["AWS Console Sign In via CloudTrail"],
+    detail = {
+      userIdentity = {
+        type = ["Root"]
+      },
+      additionalEventData = {
+        MFAUsed = ["No"]
+      }
+    }
+  })
+
+  tags = {
+    Environment = "dev"
+    Project     = "SecurityAlertingPipeline"
+  }
+
+}
