@@ -25,6 +25,12 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   source_arn    = aws_cloudwatch_event_rule.iam_create_user.arn
 }
 
+resource "aws_cloudwatch_event_target" "root_login_lambda_target" {
+  rule      = aws_cloudwatch_event_rule.root_login.name
+  arn       = aws_lambda_function.alert_function.arn
+  target_id = "RootLoginLambda"
+}
+
 resource "aws_cloudwatch_event_rule" "root_login" {
   name        = "root-login-alert"
   description = "Detect root account login without MFA"
