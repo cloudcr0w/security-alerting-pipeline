@@ -53,3 +53,10 @@ resource "aws_cloudwatch_event_rule" "root_login" {
   }
 
 }
+resource "aws_lambda_permission" "allow_root_login_event" {
+  statement_id  = "AllowExecutionFromRootLoginRule"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.alert_function.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.root_login.arn
+}
