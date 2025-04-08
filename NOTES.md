@@ -4,7 +4,7 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## ✅ Done – tuesday 1 april 2025
+## ✅ Done – tuesday 8 april 2025
 
 - ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
 - ✅ Added `outputs` for `guardduty_alert_function`
@@ -16,7 +16,9 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Tested GuardDuty Lambda manually via CLI
 - ✅ Cleaned up `output.json` with `.gitignore` entry
 - ✅ Updated README with Lambda test instructions
-
+- ✅ Added EventBridge rule to detect root user login without MFA
+- ✅ Connected alert Lambda to root login rule
+- ✅ Added permission for EventBridge to invoke Lambda
 ---
 
 ## 📌 TODO , still thinking about it ... open for ideas
@@ -37,10 +39,10 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## 📝 Future Plan >>>
+- ## 📝 Future Plan >>> Roadmap – what's next?
 
 - ✅ Clean Docker image naming (add version tag)
 - [ ] Run full test for GuardDuty Lambda using sample JSON
-- ✅ Add `README.md` to `samples/` folder for test context
+- ✅ Added `README.md` to `samples/` folder to explain usage
 - [ ] Brainstorm CI/CD ideas (e.g., GitHub Actions + Terraform Plan/Apply)
 - [ ] (Optional) Try minimal EKS or ECS simulation for alert receiver (maybe)
