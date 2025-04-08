@@ -181,13 +181,14 @@ kubectl apply -f k8s/deployment.yaml
 
 ---
 
-## 📄 Sample Files
+# 📁 Samples
 
-Located in `samples/`:
+This folder contains example files to help test the pipeline:
 
-- `terraform.tfvars.example`  
-- `sample-event.json`  
-- `sample-guardduty-event.json`
+- `terraform.tfvars.example` – sample Terraform input file
+- `sample-event.json` – mock IAM CreateUser event
+- `sample-guardduty-event.json` – mock GuardDuty finding
+
 
 ---
 
