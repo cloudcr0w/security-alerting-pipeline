@@ -2,10 +2,8 @@
 
 resource "aws_sns_topic" "security_alerts" {
   name = "security_alerts_topic"
-  tags = {
-    Environment = "dev"
-    Project     = "SecurityAlertingPipeline"
-  }
+  tags = local.common_tags
+
 
 }
 

@@ -47,10 +47,8 @@ resource "aws_cloudwatch_event_rule" "root_login" {
     }
   })
 
-  tags = {
-    Environment = "dev"
-    Project     = "SecurityAlertingPipeline"
-  }
+  tags = local.common_tags
+
 
 }
 resource "aws_lambda_permission" "allow_root_login_event" {

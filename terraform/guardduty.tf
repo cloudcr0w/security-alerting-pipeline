@@ -2,9 +2,7 @@
 
 resource "aws_guardduty_detector" "main" {
   enable = true
-  tags = {
-    Environment = "dev"
-    Project     = "SecurityAlertingPipeline"
-  }
+  tags = local.common_tags
+
 
 }

@@ -10,6 +10,8 @@ resource "aws_iam_role" "lambda_exec_role" {
       Principal = {
         Service = "lambda.amazonaws.com"
       }
+      tags = local.common_tags
+
     }]
   })
 }
