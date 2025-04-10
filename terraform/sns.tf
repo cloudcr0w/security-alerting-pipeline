@@ -1,4 +1,7 @@
-# SNS notification
+# -----------------------------------------------------------------------------
+# SNS topic and email subscription used for security alerting
+# -----------------------------------------------------------------------------
+
 
 resource "aws_sns_topic" "security_alerts" {
   name = "security_alerts_topic"
