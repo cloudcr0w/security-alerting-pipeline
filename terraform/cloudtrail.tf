@@ -6,7 +6,7 @@ resource "aws_cloudtrail" "security_trail" {
   include_global_service_events = true
   is_multi_region_trail         = true
   enable_logging                = true
-  tags = local.common_tags
+  tags                          = local.common_tags
 
 }
 resource "aws_s3_bucket" "trail_bucket" {
