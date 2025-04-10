@@ -23,3 +23,6 @@ Thumbs.db
 
 # AWS Lambda test output
 output.json
+
+# WSL/VSC temporary
+.wslrun
