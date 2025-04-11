@@ -1,5 +1,27 @@
-# 🐍 Alert Receiver
+# 🐍 Alert Receiver (Flask)
 
-A minimal Flask app for receiving security alerts via HTTP POST.
+This is a simple Flask-based app that simulates receiving alerts from AWS services (e.g., via HTTP POST).
 
-Used to simulate external alert processing in Docker or Kubernetes environments.
+It is used to demonstrate containerization and basic Kubernetes deployment.
+
+## Files
+
+- `main.py` – Flask app
+- `Dockerfile` – Builds the container
+- `docker-compose.yaml` – Runs the app locally with Docker
+- `requirements.txt` – Python dependencies
+
+## Usage
+
+### Run with Docker
+
+```bash
+docker-compose up
+```
+
+App will be available at http://localhost:5000/alert.
+
+Run manually (optional)
+```bash
+python3 main.py
+```
