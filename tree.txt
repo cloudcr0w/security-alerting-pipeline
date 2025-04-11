@@ -1,11 +1,15 @@
 .
 ├── .gitignore
+├── .wslrun
+├── CONTRIBUTING.md
 ├── LICENSE
 ├── NOTES.md
 ├── README.md
+├── SECURITY.md
 ├── alert-demo.txt
 ├── alert-receiver
 │   ├── Dockerfile
+│   ├── README.md
 │   ├── main.py
 │   └── requirements.txt
 ├── ci-notes.md
@@ -19,7 +23,6 @@
 │   ├── alert_function.zip
 │   ├── guardduty_alert_function.py
 │   └── guardduty_alert_function.zip
-├── output.json
 ├── samples
 │   ├── README.md
 │   ├── sample-event.json
@@ -34,16 +37,13 @@
 │   ├── guardduty.tf
 │   ├── iam.tf
 │   ├── lambda.tf
+│   ├── locals.tf
 │   ├── main.tf
 │   ├── outputs.tf
 │   ├── sns.tf
-│   ├── terraform.tfstate
-│   ├── terraform.tfstate.backup
-│   ├── terraform.tfvars
 │   └── variables.tf
-├── terraform.tfstate
 ├── test-events
 │   └── guardduty-ssh-brute.json
 └── tree.txt
 
-6 directories, 40 files
+7 directories, 40 files
