@@ -8,3 +8,14 @@ variable "alert_email" {
   description = "Email address to receive security alerts"
   type        = string
 }
+variable "lambda_timeout" {
+  description = "Maximum execution time for Lambda in seconds"
+  type        = number
+  default     = 10
+}
+
+variable "lambda_memory_size" {
+  description = "Amount of memory in MB for Lambda"
+  type        = number
+  default     = 256
+}
