@@ -7,8 +7,9 @@ resource "aws_lambda_function" "alert_function" {
   handler          = "alert_function.lambda_handler"
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("../lambda/alert_function.zip")
-  memory_size = 256
-  timeout     = 10
+  memory_size      = var.lambda_memory_size
+  timeout          = var.lambda_timeout
+
 
 
   environment {
@@ -30,8 +31,9 @@ resource "aws_lambda_function" "guardduty_alert_function" {
   handler          = "guardduty_alert_function.lambda_handler"
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("../lambda/guardduty_alert_function.zip")
-  memory_size = 256
-  timeout     = 10
+  memory_size      = var.lambda_memory_size
+  timeout          = var.lambda_timeout
+
 
 
   environment {
