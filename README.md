@@ -179,6 +179,22 @@ Deploy to Kubernetes:
 kubectl apply -f k8s/deployment.yaml
 ```
 
+🔧 Ansible Automation
+
+This project includes a basic Ansible playbook to simulate infrastructure automation.
+
+It installs AWS CLI v2 on a target machine (in this case, localhost) using a custom role.
+
+📁 Location: `ansible/`
+
+To run it:
+
+```bash
+cd ansible/
+ansible-playbook -i inventory playbook.yml
+```
+
+
 ---
 
 # 📁 Samples
