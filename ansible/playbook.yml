@@ -1,0 +1,6 @@
+---
+- name: Install and configure AWS CLI
+  hosts: localhost
+  become: yes   
+  roles:
+    - awscli   
