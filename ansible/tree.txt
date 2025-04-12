@@ -1,0 +1,11 @@
+ansible/
+├── README.md
+├── inventory
+├── playbook.yml
+├── roles
+│   └── awscli
+│       └── tasks
+│           └── main.yml
+└── tree.txt
+
+4 directories, 5 files
