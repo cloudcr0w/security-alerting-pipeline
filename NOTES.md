@@ -19,6 +19,15 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Added EventBridge rule to detect root user login without MFA
 - ✅ Connected alert Lambda to root login rule
 - ✅ Added permission for EventBridge to invoke Lambda
+
+
+
+## ✅ Done – April 10, 2025
+
+- ✅ Added simple Ansible role to install AWS CLI
+- ✅ Documented Ansible structure (README + tree.txt)
+
+
 ---
 
 ## 📌 TODO , still thinking about it ... open for ideas
