@@ -12,6 +12,15 @@
 │   ├── README.md
 │   ├── main.py
 │   └── requirements.txt
+├── ansible
+│   ├── README.md
+│   ├── inventory
+│   ├── playbook.yml
+│   ├── roles
+│   │   └── awscli
+│   │       └── tasks
+│   │           └── main.yml
+│   └── tree.txt
 ├── ci-notes.md
 ├── docker-compose.yml
 ├── k8s
@@ -46,4 +55,4 @@
 │   └── guardduty-ssh-brute.json
 └── tree.txt
 
-7 directories, 40 files
+11 directories, 45 files
