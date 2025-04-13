@@ -4,7 +4,7 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## ✅ Done – tuesday 8 april 2025
+## ✅ Done – tuesday 12 april 2025
 
 - ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
 - ✅ Added `outputs` for `guardduty_alert_function`
