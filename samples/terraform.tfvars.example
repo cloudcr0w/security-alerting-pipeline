@@ -1,7 +1,11 @@
-# terraform.tfvars.example
+# Example configuration for the AWS Security Alerting Pipeline
 
-# AWS region where resources will be deployed
+# AWS region where infrastructure will be deployed
 region = "us-east-1"
 
-# Email address that will receive security alerts
+# Email address for receiving SNS alerts
 alert_email = "your-email@example.com"
+
+# Optional: set project or environment name (used in tags)
+project_name = "SecurityAlertingPipeline"
+environment  = "dev"
