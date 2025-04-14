@@ -10,7 +10,7 @@ resource "aws_cloudtrail" "security_trail" {
 
 }
 resource "aws_s3_bucket" "trail_bucket" {
-  bucket = "my-security-trail-logs-bucket-for-exercise"
+  bucket = "security-alert-pipeline-logs-${random_id.bucket_suffix.hex}"
 }
 resource "aws_s3_bucket_policy" "trail_bucket_policy" {
   bucket = aws_s3_bucket.trail_bucket.id
