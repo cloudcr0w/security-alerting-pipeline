@@ -1,10 +1,11 @@
-# -----------------------------------------------------------------------------
-# This file defines GuardDuty detector and EventBridge rules for findings
-# -----------------------------------------------------------------------------
+# -------------------------------------------------------------------
+# GuardDuty setup: enables threat detection in the AWS account
+# -------------------------------------------------------------------
 
+# Create and enable the GuardDuty detector
 resource "aws_guardduty_detector" "main" {
   enable = true
-  tags   = local.common_tags
 
-
+  # Tags for clarity and resource tracking
+  tags = local.common_tags
 }
