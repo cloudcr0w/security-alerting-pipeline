@@ -13,7 +13,7 @@ resource "aws_config_configuration_recorder" "main" {
   role_arn = aws_iam_role.config.arn
 
   recording_group {
-    all_supported = true
+    all_supported                 = true
     include_global_resource_types = true
   }
 }
@@ -47,4 +47,30 @@ resource "aws_iam_role" "config" {
 resource "aws_iam_role_policy_attachment" "config_policy" {
   role       = aws_iam_role.config.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRole"
+}
+resource "aws_config_config_rule" "iam_password_policy" {
+  name = "iam-password-policy"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "IAM_PASSWORD_POLICY"
+  }
+}
+
+resource "aws_config_config_rule" "s3_bucket_public_read_prohibited" {
+  name = "s3-bucket-public-read-prohibited"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+  }
+}
+
+resource "aws_config_config_rule" "root_mfa_enabled" {
+  name = "root-account-mfa-enabled"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "ROOT_ACCOUNT_MFA_ENABLED"
+  }
 }
