@@ -85,6 +85,17 @@ Current progress:
 - 🔄 EventBridge rule + Lambda forwarding in development
 
 ---
+## ✅ AWS Config
+
+The project uses AWS Config to collect and analyse resource configurations. Currently configured to:
+
+- Change recording for all resources
+- Bucket to store logs
+- Security rules:
+  - `iam-password-policy`.
+  - `s3-bucket-public-read-prohibited`.
+  - `root-account-mfa-enabled`.
+
 
 ## ✅ GuardDuty Lambda Test Info
 
