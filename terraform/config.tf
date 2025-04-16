@@ -1,11 +1,14 @@
 resource "aws_s3_bucket" "config_logs" {
   bucket = "aws-config-logs-${data.aws_caller_identity.current.account_id}"
-  acl    = "private"
 
   tags = {
     Name        = "AWS Config Logs"
     Environment = "security-pipeline"
   }
+}
+resource "aws_s3_bucket_acl" "config_logs_acl" {
+  bucket = aws_s3_bucket.config_logs.id
+  acl    = "private"
 }
 
 resource "aws_config_configuration_recorder" "main" {
