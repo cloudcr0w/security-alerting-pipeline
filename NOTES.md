@@ -4,7 +4,7 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## ✅ Done – tuesday 12 april 2025
+## ✅ Done – Tuesday, 16 April 2025
 
 - ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
 - ✅ Added `outputs` for `guardduty_alert_function`
@@ -20,24 +20,30 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Connected alert Lambda to root login rule
 - ✅ Added permission for EventBridge to invoke Lambda
 - ✅ Successfully tested Ansible role for installing AWS CLI on localhost (Ubuntu WSL)
-
-
-
-## ✅ Done – April 10, 2025
-
 - ✅ Added simple Ansible role to install AWS CLI
-- ✅ Documented Ansible structure (README + tree.txt)
-
+- ✅ Documented Ansible structure (`README.md` + `tree.txt`)
+- ✅ Added `README.md` to `samples/` folder to explain usage
 
 ---
 
-## 📌 TODO , still thinking about it ... open for ideas
+### 🔔 AWS Config – SNS & Lambda integration
+
+- ✅ Created separate `sns_config.tf` file for clarity
+- ✅ Added SNS topic: `aws-config-alerts`
+- ✅ Subscribed Lambda function `aws_config_handler` to the topic
+- ✅ Handler receives and logs Config alerts
+- ✅ Manual Lambda zip required (no CI/CD yet)
+
+---
+
+## 📌 TODO – Still thinking about it
 
 - [ ] Add quick Slack/Discord integration via webhook
 - [ ] Consider a separate SNS topic for GuardDuty alerts
 - [ ] Try real-time GuardDuty finding in AWS Console
-- [ ] Add `print()` debug to IAM alert Lambda for consistency
-- [ ] Split Lambda code into separate folders if grows further
+- [ ] Add consistent logging (`print()` or `logger`) to IAM alert Lambda
+- [ ] Split Lambda code into separate folders if it grows further
+- [ ] Explore more AWS Config rules (e.g. `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
 
 ---
 
@@ -49,10 +55,11 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-- ## 📝 Future Plan >>> Roadmap – what's next?
+## 📝 Roadmap – What's next?
 
 - ✅ Clean Docker image naming (add version tag)
-- [ ] Run full test for GuardDuty Lambda using sample JSON
 - ✅ Added `README.md` to `samples/` folder to explain usage
+- [ ] Run full test for GuardDuty Lambda using sample JSON
 - [ ] Brainstorm CI/CD ideas (e.g., GitHub Actions + Terraform Plan/Apply)
-- [ ] (Optional) Try minimal EKS or ECS simulation for alert receiver (maybe)
+- [ ] Add CloudWatch metric filters + alarms for Lambda errors
+- [ ] (Optional) Try minimal EKS or ECS simulation for alert receiver
