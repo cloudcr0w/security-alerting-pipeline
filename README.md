@@ -85,17 +85,39 @@ Current progress:
 - 🔄 EventBridge rule + Lambda forwarding in development
 
 ---
-## ✅ AWS Config
 
-The project uses AWS Config to collect and analyse resource configurations. Currently configured to:
 
-- Change recording for all resources
-- Bucket to store logs
-- Security rules:
-  - `iam-password-policy`.
-  - `s3-bucket-public-read-prohibited`.
-  - `root-account-mfa-enabled`.
+## 🛡️ AWS Config - Security status monitoring
 
+The project uses [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) to continuously monitor the configuration of resources in the cloud. The service is configured to:
+
+- Logging all resources supported by AWS Config
+- Collecting data from the region and global resources (e.g. IAM)
+- Save configurations to a dedicated S3 bucket
+- Running security rules (managed rules)
+
+### 🔐 Current rules
+
+| Name of rule | Description | | Rule name
+|----------------------------------|--------------------------------------------------------|
+| `iam-password-policy` | Checks whether the password policy meets the minimum requirements |.
+| The rule is not an exhaustive list of rules, but rather a set of rules that can be applied to the rule.
+| The following sections provide a brief overview of the various options available to users.
+
+---
+
+## 🧪 Breach detection testing
+
+The `test.tf` file contains the test resource:
+
+``hcl
+resource ‘aws_s3_bucket’ ‘test_public_bucket’ {
+  bucket = ‘test-public-bucket-<ACCOUNT_ID>’
+  acl = ‘public-read’
+  ...
+}
+
+Translated with DeepL.com (free version)
 
 ## ✅ GuardDuty Lambda Test Info
 
