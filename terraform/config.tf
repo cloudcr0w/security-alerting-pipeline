@@ -73,4 +73,11 @@ resource "aws_config_config_rule" "root_mfa_enabled" {
     owner             = "AWS"
     source_identifier = "ROOT_ACCOUNT_MFA_ENABLED"
   }
+
+  scope {
+    compliance_resource_types = ["AWS::IAM::User"]
+  }
+
+  # notification to SNS
+  maximum_execution_frequency = "One_Hour"
 }
