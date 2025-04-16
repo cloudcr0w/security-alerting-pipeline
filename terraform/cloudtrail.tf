@@ -44,5 +44,3 @@ resource "aws_s3_bucket_policy" "trail_bucket_policy" {
     ]
   })
 }
-
-data "aws_caller_identity" "current" {}
