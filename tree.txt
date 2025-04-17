@@ -13,6 +13,7 @@
 │   ├── main.py
 │   └── requirements.txt
 ├── ansible
+│   ├── .ansible-lint
 │   ├── README.md
 │   ├── inventory
 │   ├── playbook.yml
@@ -29,9 +30,8 @@
 │   └── tree.txt
 ├── lambda
 │   ├── alert_function.py
-│   ├── alert_function.zip
-│   ├── guardduty_alert_function.py
-│   └── guardduty_alert_function.zip
+│   ├── aws_config_handler.py
+│   └── guardduty_alert_function.py
 ├── samples
 │   ├── README.md
 │   ├── sample-event.json
@@ -41,7 +41,9 @@
 │   ├── .terraform.lock.hcl
 │   ├── README.md
 │   ├── cloudtrail.tf
+│   ├── config.tf
 │   ├── eventbridge.tf
+│   ├── eventbridge_config.tf
 │   ├── eventbridge_guardduty.tf
 │   ├── guardduty.tf
 │   ├── iam.tf
@@ -50,9 +52,11 @@
 │   ├── main.tf
 │   ├── outputs.tf
 │   ├── sns.tf
+│   ├── sns_config.tf
+│   ├── test.tf
 │   └── variables.tf
 ├── test-events
 │   └── guardduty-ssh-brute.json
 └── tree.txt
 
-11 directories, 45 files
+11 directories, 49 files
