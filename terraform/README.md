@@ -1,17 +1,15 @@
-# ☁️ Terraform Configuration
+## 📁 Structure
 
-This directory contains all Terraform modules for the AWS Security Alerting Pipeline:
+| File                        | Purpose                                      |
+|-----------------------------|----------------------------------------------|
+| `main.tf`                   | Provider and shared config                   |
+| `iam.tf`                    | IAM roles and policies for Lambda + Config   |
+| `cloudtrail.tf`             | CloudTrail + logging setup                   |
+| `lambda.tf`                 | Lambda function deployment                   |
+| `sns_config.tf`             | SNS topic for alert notifications            |
+| `eventbridge_config.tf`     | EventBridge rule for AWS Config changes      |
+| `test.tf`                   | Intentional misconfig (public S3) for testing|
 
-- IAM roles and policies
-- CloudTrail + EventBridge
-- Lambda functions
-- SNS notifications
-- GuardDuty integration
+## 🧱 Project Tree
 
-To deploy:
-
-```bash
-cd terraform/
-terraform init
-terraform apply
-```
+Current file structure: [`tree.txt`](../tree.txt)
