@@ -1,3 +1,4 @@
+# Rule catching AWS Config compliance state changes
 resource "aws_cloudwatch_event_rule" "aws_config_compliance_change" {
   name        = "aws-config-compliance-change"
   description = "Catch compliance state changes from AWS Config rules"
