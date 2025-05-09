@@ -26,3 +26,6 @@ output.json
 
 # WSL/VSC temporary
 .wslrun
+
+# other
+diagram.md
