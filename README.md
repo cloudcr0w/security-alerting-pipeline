@@ -6,7 +6,7 @@ This project demonstrates a simple and effective AWS security alerting pipeline 
 
 ---
 
-## 🚀 Project Overview
+## 🚨 Use Case: Real-Time AWS Security Monitoring
 
 The pipeline captures specific security-related events, such as:
 
@@ -16,6 +16,26 @@ The pipeline captures specific security-related events, such as:
 Once detected, the pipeline sends an email alert to notify administrators of potential risks or unauthorized changes in the AWS environment.
 
 ---
+---
+
+## 🔐 Automated Threat Detection & Response
+
+This project implements an automated security alerting pipeline using AWS native services. It is designed to detect threats and configuration drift in real-time, and respond with notifications or actions.
+
+### 🔎 Active Detection Sources:
+- **AWS CloudTrail**: Tracks IAM actions like `CreateUser`, `AttachRolePolicy`
+- **AWS GuardDuty**: Detects suspicious activities such as SSH brute-force attempts, reconnaissance, and port scans
+- **AWS Config**: Continuously monitors misconfigured resources (e.g., public S3 buckets)
+
+### ⚙️ Response Mechanism:
+- **EventBridge** rules trigger **Lambda** functions for event parsing
+- **SNS** notifies administrators (email/SMS/webhook)
+- **Optional**: alerts can be consumed by the built-in `Flask` app or integrated with Slack/Discord
+
+This pipeline is extendable, serverless, and built entirely with Terraform.
+
+---
+
 
 ## ✅ Initial Use Case
 
@@ -25,18 +45,7 @@ Once detected, the pipeline sends an email alert to notify administrators of pot
 
 ## 🧱 Architecture
 
-**High-level flow:**
-
-CloudTrail --> EventBridge --> Lambda --> SNS --> Email  
-     |             |              |         |  
-  Logs         Event Filter    Alert    Notification  
-                               Logic     via Email  
-
-GuardDuty ----^  
-   |  
-Threat Findings
-
-*(Architecture diagram coming soon)*
+![AWS Security Alerting Pipeline](diagram.png)
 
 ---
 
@@ -251,15 +260,15 @@ This folder contains example files to help test the pipeline:
 
 ---
 
-## 🔭 Next Steps (Ideas for Expansion)
+## 📈 Future Roadmap (Security Automation)
 
-- Add support for more events (e.g., S3 bucket policy changes, root login)  
-- Integrate with Slack or Discord via webhook  
-- Add CI/CD for Terraform + Lambda packaging  
-- Improve error handling and logging  
-- Add CloudWatch metrics and alarms
+- ✅ Add more CloudTrail events (e.g., root login, MFA changes, S3 policy changes)
+- 🔄 Integrate with **AWS Security Hub** to aggregate and prioritize security findings
+- 🔄 Add **IAM Access Analyzer** integration to detect overly permissive roles or policies
+- ⏳ Auto-remediation: automatically detach suspicious IAM policies or restrict S3 bucket access
+- ⏳ Alert enrichment: include geolocation, IP reputation, and who triggered the event
 
----
+
 
 ## 👤 Author
 
