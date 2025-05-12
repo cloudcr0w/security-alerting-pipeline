@@ -16,7 +16,6 @@ The pipeline captures specific security-related events, such as:
 Once detected, the pipeline sends an email alert to notify administrators of potential risks or unauthorized changes in the AWS environment.
 
 ---
----
 
 ## 🔐 Automated Threat Detection & Response
 
@@ -110,8 +109,25 @@ The project uses [AWS Config](https://docs.aws.amazon.com/config/latest/develope
 | Name of rule | Description | | Rule name
 |----------------------------------|--------------------------------------------------------|
 | `iam-password-policy` | Checks whether the password policy meets the minimum requirements |.
-| The rule is not an exhaustive list of rules, but rather a set of rules that can be applied to the rule.
-| The following sections provide a brief overview of the various options available to users.
+
+## 💬 Slack Alerts (NEW)
+
+This project now includes integration with **Slack** to send real-time security alerts directly to a Slack channel. When a misconfiguration is detected (like a public S3 bucket), the system immediately notifies the team.
+
+### How it works:
+
+- **AWS Config** detects a NON_COMPLIANT resource  
+- The event is sent to **Amazon EventBridge**  
+- EventBridge triggers a **Lambda function**  
+- The Lambda sends a message to **Slack** via webhook
+
+### Why it’s useful:
+
+- Alerts are delivered instantly to your team
+- It helps detect and respond to security issues faster
+- Easy to extend with other alert sources like GuardDuty or CloudTrail
+
+---
 
 ---
 
