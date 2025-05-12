@@ -39,6 +39,7 @@ resource "aws_lambda_function" "guardduty_alert_function" {
   environment {
     variables = {
       SNS_TOPIC_ARN = aws_sns_topic.security_alerts.arn
+      SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
     }
   }
   tags = {
