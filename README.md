@@ -291,4 +291,4 @@ This folder contains example files to help test the pipeline:
 **Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
 🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
 
-_Last updated: April 7, 2025_
+_Last updated: May 12, 2025_

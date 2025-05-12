@@ -32,13 +32,16 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Added SNS topic: `aws-config-alerts`
 - ✅ Subscribed Lambda function `aws_config_handler` to the topic
 - ✅ Handler receives and logs Config alerts
-- ✅ Manual Lambda zip required (no CI/CD yet)
+
++ ✅ Manual Lambda zip used (CI/CD not implemented yet)
++ ✅ Lambda integration tested with NON_COMPLIANT Config rule
++ ✅ Slack webhook added to handler for real-time alerts
 
 ---
 
 ## 📌 TODO – Still thinking about it
 
-- [ ] Add quick Slack/Discord integration via webhook
++ ✅ Add quick Slack/Discord integration via webhook
 - [ ] Consider a separate SNS topic for GuardDuty alerts
 - [ ] Try real-time GuardDuty finding in AWS Console
 - [ ] Add consistent logging (`print()` or `logger`) to IAM alert Lambda
