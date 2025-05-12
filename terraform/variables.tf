@@ -19,3 +19,7 @@ variable "lambda_memory_size" {
   type        = number
   default     = 256
 }
+variable "slack_webhook_url" {
+  description = "Slack incoming webhook URL"
+  sensitive   = true
+}
