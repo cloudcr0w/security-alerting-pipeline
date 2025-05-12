@@ -2,7 +2,7 @@ import json
 import os
 import requests
 
-SLACK_WEBHOOK_URL = os.environ.get("https://hooks.slack.com/services/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")
+SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
 
 def lambda_handler(event, context):
     print("Received AWS Config alert:")
