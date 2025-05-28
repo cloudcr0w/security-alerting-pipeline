@@ -3,6 +3,10 @@
 ---
 - name: Install and configure AWS CLI
   hosts: localhost
-  become: yes   
+  become: yes
   roles:
-    - awscli   
+    - role: awscli
+      vars:
+        aws_access_key: "your-access-key"
+        aws_secret_key: "your-secret-key"
+        aws_region: "us-east-1"
