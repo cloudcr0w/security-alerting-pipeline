@@ -1,24 +1,37 @@
-# tags: awscli, install
-
----
-- name: Ensure unzip is installed
+- name: Ensure required packages are installed
   apt:
-    name: unzip
+    name: [ unzip, curl ]
     state: present
-  become: yes
+    update_cache: yes
+  tags: ['awscli', 'dependencies']
 
-- name: Download AWS CLI v2 installer
+- name: Download AWS CLI v2
   get_url:
-    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-    dest: /tmp/awscliv2.zip
+    url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+    dest: "/tmp/awscliv2.zip"
+  tags: ['awscli', 'download']
 
-- name: Unpack AWS CLI
+- name: Unzip AWS CLI v2
   unarchive:
-    src: /tmp/awscliv2.zip
-    dest: /tmp/
+    src: "/tmp/awscliv2.zip"
+    dest: "/tmp"
     remote_src: yes
+  tags: ['awscli', 'unzip']
 
-- name: Install AWS CLI
-  command: /tmp/aws/install
+- name: Install AWS CLI v2
+  command: "/tmp/aws/install"
   args:
-    creates: /usr/local/bin/aws
+    creates: "/usr/local/bin/aws"
+  tags: ['awscli', 'install']
+
+- name: Configure AWS CLI access key
+  shell: "aws configure set aws_access_key_id {{ aws_access_key }}"
+  tags: ['awscli', 'configure']
+
+- name: Configure AWS CLI secret key
+  shell: "aws configure set aws_secret_access_key {{ aws_secret_key }}"
+  tags: ['awscli', 'configure']
+
+- name: Configure AWS CLI region
+  shell: "aws configure set region {{ aws_region }}"
+  tags: ['awscli', 'configure']
