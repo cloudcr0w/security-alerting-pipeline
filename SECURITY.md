@@ -18,8 +18,5 @@ If you discover a potential security issue in this project, please:
 Maintainer contact:
 **Adam Wrona** – via GitHub or [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b)
 
-We will investigate the issue and respond as soon as possible.
 
----
 
-🛡️ This project is for educational purposes and **should not be used in production** without review and adaptation.
