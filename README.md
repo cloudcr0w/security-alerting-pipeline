@@ -1,5 +1,7 @@
 # 🛡️ AWS Security Alerting Pipeline
 
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
+
 ### AWS-native alerting system for IAM and GuardDuty events – built with Terraform, Lambda and SNS
 
 This project demonstrates a simple and effective AWS security alerting pipeline that detects IAM and GuardDuty security events and sends notifications via email using AWS services.
