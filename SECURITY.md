@@ -4,19 +4,24 @@
 
 This is a learning project and is maintained on a best-effort basis.
 
-| Version | Supported          |
-|---------|--------------------|
-| latest  | ✅                 |
+| Version | Supported |
+|---------|-----------|
+| latest  | ✅        |
+
+---
 
 ## 📣 Reporting a Vulnerability
 
 If you discover a potential security issue in this project, please:
 
 - **Do not open a public issue**
-- Instead, contact the project maintainer privately
+- Instead, contact the project maintainer privately to avoid exposing security risks.
 
-Maintainer contact:
-**Adam Wrona** – via GitHub or [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b)
+### 🔗 Contact
+**Adam Wrona**  
+GitHub: [@cloudcr0w](https://github.com/cloudcr0w)  
+LinkedIn: [adam-wrona-111ba728b](https://www.linkedin.com/in/adam-wrona-111ba728b)
 
+---
 
-
+Thank you for helping keep this project secure!
