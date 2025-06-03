@@ -21,6 +21,10 @@ Thank you for considering contributing to this project!
 
 Use test-events in `samples/` folder to manually test Lambda functions via AWS CLI or Console.
 
+## 🔄 Ongoing Dev Log
+
+For ongoing development notes and progress tracking, see [DEVLOG.md](DEVLOG.md).
+
 ## 💬 Feedback
 
 Feel free to open an issue or reach out if you have suggestions or questions!
