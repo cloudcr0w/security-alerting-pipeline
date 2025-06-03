@@ -9,6 +9,8 @@ resource "aws_lambda_function" "alert_function" {
   source_code_hash = filebase64sha256("../lambda/alert_function.zip")
   memory_size      = var.lambda_memory_size
   timeout          = var.lambda_timeout
+  tags             = local.common_tags
+
 
 
 
@@ -17,10 +19,7 @@ resource "aws_lambda_function" "alert_function" {
       SNS_TOPIC_ARN = aws_sns_topic.security_alerts.arn
     }
   }
-  tags = {
-    Project     = "SecurityAlertingPipeline"
-    Environment = "dev"
-  }
+
 
 }
 
@@ -38,7 +37,7 @@ resource "aws_lambda_function" "guardduty_alert_function" {
 
   environment {
     variables = {
-      SNS_TOPIC_ARN = aws_sns_topic.security_alerts.arn
+      SNS_TOPIC_ARN     = aws_sns_topic.security_alerts.arn
       SLACK_WEBHOOK_URL = var.slack_webhook_url
     }
   }
