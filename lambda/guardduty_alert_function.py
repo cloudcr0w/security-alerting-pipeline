@@ -2,6 +2,11 @@ import json
 import boto3
 import os
 
+# Parse incoming GuardDuty event
+# Extract finding type and IP address
+# Format message for Slack
+# Send via webhook
+
 # Set up SNS client
 sns = boto3.client("sns")
 
