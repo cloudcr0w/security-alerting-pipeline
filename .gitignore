@@ -29,3 +29,4 @@ output.json
 
 # other
 diagram.md
+.venv/

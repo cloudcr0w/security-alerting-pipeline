@@ -27,17 +27,16 @@ Type: {finding_type}
 Severity: {severity}
 Instance ID: {instance_id}
 """
-
         # Publish message to SNS
-        sns.publish(
+        response = sns.publish(
             TopicArn=sns_topic,
             Subject=f"GuardDuty Alert - {finding_type}",
             Message=message.strip()
         )
-        print("Message sent successfully.")
+        print("Message sent successfully:", response['MessageId'])
 
     except Exception as e:
-        print("Error during alert processing:", str(e))
+        print(f"[ERROR] Failed to process GuardDuty alert: {e}")
 
     return {
         "statusCode": 200,
