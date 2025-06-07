@@ -78,6 +78,10 @@ resource "aws_cloudwatch_metric_alarm" "iam_alert_errors" {
   alarm_actions = [aws_sns_topic.security_alerts.arn]
 }
 ```
+### IAM Alerts
+
+A separate Lambda (`alert_function.py`) listens for sensitive CloudTrail IAM events (e.g. CreateUser).  
+It parses event context and sends formatted alerts to an SNS topic.
 
 ---
 
