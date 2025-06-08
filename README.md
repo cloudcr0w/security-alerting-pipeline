@@ -12,7 +12,7 @@
 
 - [Initial Use Case](#initial-use-case)
 - [Use case](#use-case)
-- [Stack](#stack)
+- [Stack](#https://github.com/cloudcr0w/security-alerting-pipeline/tree/main?tab=readme-ov-file#%EF%B8%8F-stack)
 - [Architecture](#architecture)
 - [Structure](#structure)
 - [Detailed Setup & Features](#detailed-setup--features)
