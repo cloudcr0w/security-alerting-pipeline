@@ -6,6 +6,21 @@
 
 > Real-time AWS security monitoring using native services like CloudTrail, GuardDuty, Lambda, EventBridge, and SNS – fully automated with Terraform.
 
+## 📚 Spis treści
+
+## 📚 Spis treści
+
+- [Initial Use Case](#initial-use-case)
+- [Use case](#use-case)
+- [Stack](#stack)
+- [Architecture](#architecture)
+- [Structure](#structure)
+- [Detailed Setup & Features](#detailed-setup--features)
+- [What I Learned](#what-i-learned)
+- [Author](#author)
+- [License](#license)
+- [Security Policy](#security-policy)
+
 ---
 
 ## ✅ Initial Use Case
