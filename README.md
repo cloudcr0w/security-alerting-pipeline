@@ -81,7 +81,7 @@ See [DETAILS.md](DETAILS.md) for:
 **Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
 🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
 
-_Last updated: May 12, 2025_
+_Last updated: June 8, 2025_
 
 ---
 
