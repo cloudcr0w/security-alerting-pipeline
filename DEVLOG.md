@@ -1,4 +1,7 @@
 # 📓 DEVLOG – AWS Security Alerting Pipeline
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
+![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
+![Status](https://img.shields.io/badge/project-learning-informational)
 
 Work in progress – focused on learning, improving, and building practical AWS security skills.
 

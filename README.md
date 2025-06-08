@@ -1,6 +1,8 @@
 # 🛡️ AWS Security Alerting Pipeline
 
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
+![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
+![Status](https://img.shields.io/badge/project-learning-informational)
 
 > Real-time AWS security monitoring using native services like CloudTrail, GuardDuty, Lambda, EventBridge, and SNS – fully automated with Terraform.
 

@@ -1,4 +1,7 @@
 # 🙌 Contributing to AWS Security Alerting Pipeline
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
+![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
+![Status](https://img.shields.io/badge/project-learning-informational)
 
 Thank you for considering contributing to this project!
 
