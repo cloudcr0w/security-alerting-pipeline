@@ -20,6 +20,12 @@ If you discover a potential security issue in this project, please:
 - **Do not open a public issue**
 - Instead, contact the project maintainer privately to avoid exposing security risks.
 
+## 🙏 Acknowledgments
+
+This project was inspired by real-world AWS security use cases  
+and learning resources such as AWS blogs, documentation, and community projects.
+
+
 ### 🔗 Contact
 **Adam Wrona**  
 GitHub: [@cloudcr0w](https://github.com/cloudcr0w)  
