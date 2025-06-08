@@ -1,15 +1,7 @@
-# 🛡️ AWS Security Alerting Pipeline
-
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
-![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
-![Status](https://img.shields.io/badge/project-learning-informational)
-
-> Real-time AWS security monitoring using native services like CloudTrail, GuardDuty, Lambda, EventBridge, and SNS – fully automated with Terraform.
-
-## 📚 Table of Contents
+## Table of Contents
 
 - [Initial Use Case](#initial-use-case)
-- [Use Cases](#use-cases)
+- [Use Case](#use-case)
 - [Stack](#stack)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
@@ -21,24 +13,21 @@
 
 ---
 
-## ✅ Initial Use Case
-
+## Initial Use Case
 > Detect and alert when a new IAM user is created (`CreateUser` event in AWS CloudTrail).
 
 ---
 
-## 🔍 Use Cases
-
+## Use Case
 Detects suspicious activity like:
-
-- 👤 IAM user creation  
-- ❌ Root login without MFA  
-- 🧐 GuardDuty findings (SSH brute-force, port scan)  
-- 💼 AWS Config non-compliant resources (e.g., public S3)
+- IAM user creation  
+- Root login without MFA  
+- GuardDuty findings (SSH brute-force, port scan)  
+- AWS Config non-compliant resources (e.g., public S3)
 
 ---
 
-## ⚖️ Stack
+## Stack
 
 | Category      | Technology                         |
 |---------------|------------------------------------|
@@ -50,7 +39,7 @@ Detects suspicious activity like:
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ![AWS Security Alerting Pipeline](diagram.png)
 
@@ -61,7 +50,7 @@ Detects suspicious activity like:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 terraform/ # Infrastructure as Code
@@ -72,9 +61,7 @@ ansible/ # AWS CLI provisioning
 k8s/ # Kubernetes deployment manifests
 ```
 
----
-
-## 📄 Detailed Setup & Features
+## Detailed Setup & Features
 
 See [DETAILS.md](DETAILS.md) for:
 
@@ -86,7 +73,7 @@ See [DETAILS.md](DETAILS.md) for:
 
 ---
 
-## 🧠 What I Learned
+## What I Learned
 
 - How to use Terraform to deploy a real security alerting pipeline  
 - How IAM, GuardDuty, EventBridge, Lambda, and SNS integrate  
@@ -96,7 +83,7 @@ See [DETAILS.md](DETAILS.md) for:
 
 ---
 
-## 👨‍💼 Author
+## Author
 
 **Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
 🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
@@ -105,12 +92,12 @@ _Last updated: June 8, 2025_
 
 ---
 
-## 🌐 License
+## License
 
 [MIT](LICENSE)
 
 ---
 
-## 🚫 Security Policy
+## Security Policy
 
 For vulnerability reports, please see [SECURITY.md](SECURITY.md)
