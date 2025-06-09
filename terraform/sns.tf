@@ -15,3 +15,8 @@ resource "aws_sns_topic_subscription" "email_alert" {
   protocol  = "email"
   endpoint  = var.alert_email
 }
+
+resource "aws_sns_topic" "guardduty_alerts" {
+  name = "guardduty_alerts_topic"
+  tags = local.common_tags
+}
