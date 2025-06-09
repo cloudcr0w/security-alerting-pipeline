@@ -46,12 +46,12 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Subscribed Lambda function `aws_config_handler` to the topic
 - ✅ Handler receives and logs Config alerts
 - ✅ Slack webhook added to handler for real-time alerts
-
+- ✅ Add separate SNS topic for GuardDuty alerts
 ---
 
 ## 📌 TODO – Next up
 
-- [ ] Add separate SNS topic for GuardDuty alerts
+
 - [ ] Implement Slack alerts for GuardDuty Lambda
 - [ ] Test GuardDuty with real-time console findings
 - [ ] Add logging (`print()` or `logger`) to all Lambda handlers
