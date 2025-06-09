@@ -18,5 +18,7 @@ output "alert_lambda_version" {
 output "guardduty_lambda_version" {
   value       = aws_lambda_function.guardduty_alert_function.version
   description = "version of GuardDuty alert Lambda function"
-
+}
+output "guardduty_sns_topic_arn" {
+  value = aws_sns_topic.guardduty_alerts.arn
 }
