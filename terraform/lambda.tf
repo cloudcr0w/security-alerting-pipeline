@@ -37,10 +37,11 @@ resource "aws_lambda_function" "guardduty_alert_function" {
 
   environment {
     variables = {
-      SNS_TOPIC_ARN     = aws_sns_topic.security_alerts.arn
+      SNS_TOPIC_ARN     = aws_sns_topic.guardduty_alerts.arn
       SLACK_WEBHOOK_URL = var.slack_webhook_url
     }
   }
+
   tags = {
     Project     = "SecurityAlertingPipeline"
     Environment = "dev"
