@@ -39,27 +39,28 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## 🔔 AWS Config – SNS & Lambda integration
+## 🔔 AWS Config & GuardDuty – SNS & Lambda Integration
 
-- ✅ Created separate `sns_config.tf` file for clarity
+- ✅ Created separate `sns_config.tf` file for AWS Config clarity
 - ✅ Added SNS topic: `aws-config-alerts`
 - ✅ Subscribed Lambda function `aws_config_handler` to the topic
 - ✅ Handler receives and logs Config alerts
-- ✅ Slack webhook added to handler for real-time alerts
-- ✅ Add separate SNS topic for GuardDuty alerts
+- ✅ Slack webhook added to Config handler for real-time alerts
+- ✅ Created **separate SNS topic** for GuardDuty alerts
+- ✅ GuardDuty Lambda now supports **Slack and SNS alerts**
+- ✅ Improved **logging and exception handling** in all Lambda handlers
+
 ---
 
 ## 📌 TODO – Next up
 
-
-- [ ] Implement Slack alerts for GuardDuty Lambda
 - [ ] Test GuardDuty with real-time console findings
-- [ ] Add logging (`print()` or `logger`) to all Lambda handlers
 - [ ] Split Lambda code into separate folders (per function)
 - [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
 - [ ] Add CloudWatch metric filters for Lambda invocations, throttles
 - [ ] Deploy Flask alert receiver in ECS or EKS
 - [ ] Explore more AWS Config rules (e.g., `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+
 
 ---
 
