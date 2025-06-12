@@ -1,12 +1,12 @@
 #Lambda function
 
 resource "aws_lambda_function" "alert_function" {
-  filename         = "../lambda/alert_function.zip"
+  filename         = "../lambda/alert_function/alert_function.zip"
   function_name    = "security-alert-function"
   role             = aws_iam_role.lambda_exec_role.arn
   handler          = "alert_function.lambda_handler"
   runtime          = "python3.12"
-  source_code_hash = filebase64sha256("../lambda/alert_function.zip")
+  source_code_hash = filebase64sha256("../lambda/alert_function/alert_function.zip")
   memory_size      = var.lambda_memory_size
   timeout          = var.lambda_timeout
   tags             = local.common_tags
@@ -24,12 +24,12 @@ resource "aws_lambda_function" "alert_function" {
 }
 
 resource "aws_lambda_function" "guardduty_alert_function" {
-  filename         = "../lambda/guardduty_alert_function.zip"
+  filename         = "../lambda/guardduty_alert_function/guardduty_alert_function.zip"
   function_name    = "guardduty_alert_function"
   role             = aws_iam_role.lambda_exec_role.arn
   handler          = "guardduty_alert_function.lambda_handler"
   runtime          = "python3.12"
-  source_code_hash = filebase64sha256("../lambda/guardduty_alert_function.zip")
+  source_code_hash = filebase64sha256("../lambda/guardduty_alert_function/guardduty_alert_function.zip")
   memory_size      = var.lambda_memory_size
   timeout          = var.lambda_timeout
 
@@ -49,12 +49,12 @@ resource "aws_lambda_function" "guardduty_alert_function" {
 
 }
 resource "aws_lambda_function" "aws_config_handler" {
-  filename         = "../lambda/aws_config_handler.zip"
+  filename         = "../lambda/aws_config_handler/aws_config_handler.zip"
   function_name    = "aws_config_handler"
   role             = aws_iam_role.lambda_exec.arn
   handler          = "aws_config_handler.lambda_handler"
   runtime          = "python3.12"
-  source_code_hash = filebase64sha256("../lambda/aws_config_handler.zip")
+  source_code_hash = filebase64sha256("../lambda/aws_config_handler/aws_config_handler.zip")
 }
 
 resource "aws_iam_role" "lambda_exec" {
