@@ -49,13 +49,12 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Created **separate SNS topic** for GuardDuty alerts
 - ✅ GuardDuty Lambda now supports **Slack and SNS alerts**
 - ✅ Improved **logging and exception handling** in all Lambda handlers
-
+- ✅ Split Lambda code into separate folders (per function)
 ---
 
 ## 📌 TODO – Next up
 
 - [ ] Test GuardDuty with real-time console findings
-- [ ] Split Lambda code into separate folders (per function)
 - [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
 - [ ] Add CloudWatch metric filters for Lambda invocations, throttles
 - [ ] Deploy Flask alert receiver in ECS or EKS
