@@ -24,3 +24,53 @@ resource "aws_cloudwatch_metric_alarm" "iam_alert_errors" {
 
   tags = local.common_tags
 }
+
+resource "aws_cloudwatch_log_metric_filter" "lambda_errors" {
+  name           = "LambdaErrorCount"
+  log_group_name = "/aws/lambda/security-alert-function"
+  pattern        = "?ERROR ?Exception"
+
+  metric_transformation {
+    name      = "LambdaErrorCount"
+    namespace = "Custom/Lambda"
+    value     = "1"
+  }
+}
+
+resource "aws_cloudwatch_log_metric_filter" "lambda_throttles" {
+  name           = "LambdaThrottleCount"
+  log_group_name = "/aws/lambda/security-alert-function"
+  pattern        = "Task timed out"
+
+  metric_transformation {
+    name      = "LambdaThrottleCount"
+    namespace = "Custom/Lambda"
+    value     = "1"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "lambda_error_alarm" {
+  alarm_name          = "LambdaErrorAlarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "LambdaErrorCount"
+  namespace           = "Custom/Lambda"
+  period              = 60
+  statistic           = "Sum"
+  threshold           = 1
+  alarm_description   = "Alarm when Lambda errors occur"
+  treat_missing_data  = "notBreaching"
+}
+
+resource "aws_cloudwatch_metric_alarm" "lambda_throttle_alarm" {
+  alarm_name          = "LambdaThrottleAlarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "LambdaThrottleCount"
+  namespace           = "Custom/Lambda"
+  period              = 60
+  statistic           = "Sum"
+  threshold           = 1
+  alarm_description   = "Alarm when Lambda throttling occurs"
+  treat_missing_data  = "notBreaching"
+}
