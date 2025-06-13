@@ -79,7 +79,4 @@ Source IP: {ip}
         'statusCode': 200,
         'body': 'Alert sent.'
     }
-    raise Exception("Test error for CloudWatch")
-    return {
-        'statusCode': 200,
-        'body': 'Alert sent.'
+
