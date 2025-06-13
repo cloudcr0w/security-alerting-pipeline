@@ -1,3 +1,7 @@
+# AWS Security Alerting Pipeline
+
+  End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
+
 ## Table of Contents
 
 - [Initial Use Case](#initial-use-case)
@@ -88,7 +92,7 @@ See [DETAILS.md](DETAILS.md) for:
 **Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
 🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
 
-_Last updated: June 8, 2025_
+_Last updated: June 13, 2025_
 
 ---
 
@@ -101,3 +105,8 @@ _Last updated: June 8, 2025_
 ## Security Policy
 
 For vulnerability reports, please see [SECURITY.md](SECURITY.md)
+
+```markdown
+> "Trust me, I'm a Lambda."  
+> — this function, probably right before it timed out
+```
