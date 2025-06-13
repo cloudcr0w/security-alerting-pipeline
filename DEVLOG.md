@@ -7,7 +7,7 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## ✅ Done – Tuesday, 3 June 2025
+## ✅ Done 
 
 - ✅ Unified test files under `tests/` folder and renamed for clarity
 - ✅ Refactored Terraform to use `local.common_tags` for consistent tagging
@@ -18,7 +18,7 @@ Work in progress – focused on learning, improving, and building practical AWS 
 
 ---
 
-## ✅ Earlier – Tuesday, 16 April 2025
+## ✅ Earlier 
 
 - ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
 - ✅ Added `outputs` for `guardduty_alert_function`
@@ -50,13 +50,12 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ GuardDuty Lambda now supports **Slack and SNS alerts**
 - ✅ Improved **logging and exception handling** in all Lambda handlers
 - ✅ Split Lambda code into separate folders (per function)
----
+- ✅ Add CloudWatch metric filters for Lambda invocations, throttles
 
 ## 📌 TODO – Next up
 
 - [ ] Test GuardDuty with real-time console findings
 - [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
-- [ ] Add CloudWatch metric filters for Lambda invocations, throttles
 - [ ] Deploy Flask alert receiver in ECS or EKS
 - [ ] Explore more AWS Config rules (e.g., `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
 
