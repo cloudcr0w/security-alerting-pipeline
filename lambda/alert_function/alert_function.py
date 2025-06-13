@@ -83,5 +83,3 @@ Source IP: {ip}
     return {
         'statusCode': 200,
         'body': 'Alert sent.'
-    }
-    
