@@ -51,13 +51,14 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - ✅ Improved **logging and exception handling** in all Lambda handlers
 - ✅ Split Lambda code into separate folders (per function)
 - ✅ Add CloudWatch metric filters for Lambda invocations, throttles
+- ✅ Explore more AWS Config rules (e.g., `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
 
 ## 📌 TODO – Next up
 
 - [ ] Test GuardDuty with real-time console findings
 - [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
 - [ ] Deploy Flask alert receiver in ECS or EKS
-- [ ] Explore more AWS Config rules (e.g., `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+
 
 
 ---
