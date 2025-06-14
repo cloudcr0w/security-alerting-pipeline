@@ -1,5 +1,7 @@
 # AWS Security Alerting Pipeline
 
+![status](https://img.shields.io/badge/status-WIP-yellow)
+
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
 
 ## Table of Contents
