@@ -2,12 +2,15 @@
 ├── .gitignore
 ├── .wslrun
 ├── CONTRIBUTING.md
+├── DETAILS.md
+├── DEVLOG.md
 ├── LICENSE
 ├── NOTES.md
 ├── README.md
 ├── SECURITY.md
 ├── alert-demo.txt
 ├── alert-receiver
+│   ├── .env.example
 │   ├── Dockerfile
 │   ├── README.md
 │   ├── main.py
@@ -18,30 +21,27 @@
 │   ├── inventory
 │   ├── playbook.yml
 │   ├── roles
-│   │   └── awscli
-│   │       └── tasks
-│   │           └── main.yml
 │   └── tree.txt
 ├── ci-notes.md
+├── diagram.md
+├── diagram.png
 ├── docker-compose.yml
 ├── k8s
 │   ├── README.md
 │   ├── deployment.yaml
 │   └── tree.txt
 ├── lambda
-│   ├── alert_function.py
-│   ├── aws_config_handler.py
-│   └── guardduty_alert_function.py
-├── samples
-│   ├── README.md
-│   ├── sample-event.json
-│   ├── sample-guardduty-event.json
-│   └── terraform.tfvars.example
+│   ├── __init__.py
+│   ├── alert_function
+│   ├── aws_config_handler
+│   └── guardduty_alert_function
 ├── terraform
 │   ├── .terraform.lock.hcl
 │   ├── README.md
 │   ├── cloudtrail.tf
+│   ├── cloudwatch.tf
 │   ├── config.tf
+│   ├── ecs
 │   ├── eventbridge.tf
 │   ├── eventbridge_config.tf
 │   ├── eventbridge_guardduty.tf
@@ -53,10 +53,15 @@
 │   ├── outputs.tf
 │   ├── sns.tf
 │   ├── sns_config.tf
+│   ├── terraform.tfvars
 │   ├── test.tf
 │   └── variables.tf
-├── test-events
-│   └── guardduty-ssh-brute.json
+├── tests
+│   ├── README.md
+│   ├── cloudtrail_create_user_event.json
+│   ├── guardduty-ssh-brute.json
+│   ├── sample-guardduty-event.json
+│   └── terraform.tfvars.example
 └── tree.txt
 
-11 directories, 49 files
+12 directories, 53 files
