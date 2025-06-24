@@ -69,7 +69,7 @@ k8s/ # Kubernetes deployment manifests
 
 ## Detailed Setup & Features
 
-See [DETAILS.md](DETAILS.md) for:
+See [docs/DETAILS.md](docs/DETAILS.md) for:
 
 - Deployment instructions  
 - Sample test events  
