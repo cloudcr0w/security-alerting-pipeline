@@ -59,8 +59,6 @@ Work in progress – focused on learning, improving, and building practical AWS 
 - [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
 - [ ] Deploy Flask alert receiver in ECS or EKS
 
-
-
 ---
 
 ## ❓ Questions to Explore
