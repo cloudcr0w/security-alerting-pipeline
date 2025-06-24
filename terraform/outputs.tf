@@ -22,3 +22,9 @@ output "guardduty_lambda_version" {
 output "guardduty_sns_topic_arn" {
   value = aws_sns_topic.guardduty_alerts.arn
 }
+output "config_rules" {
+  value = [
+    aws_config_config_rule.iam_user_no_mfa.name,
+    aws_config_config_rule.root_mfa_enabled.name
+  ]
+}
