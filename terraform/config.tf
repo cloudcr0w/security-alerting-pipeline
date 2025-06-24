@@ -32,6 +32,19 @@ resource "aws_config_configuration_recorder_status" "main" {
   is_enabled = true
 }
 
+resource "aws_config_config_rule" "iam_user_no_mfa" {
+  name = "iam-user-no-mfa"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "IAM_USER_NO_MFA"
+  }
+
+  scope {
+    compliance_resource_types = ["AWS::IAM::User"]
+  }
+}
+
 resource "aws_iam_role" "config" {
   name = "aws_config_role"
 
