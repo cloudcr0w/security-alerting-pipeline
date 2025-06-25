@@ -1,6 +1,12 @@
 # AWS Security Alerting Pipeline
 
-![status](https://img.shields.io/badge/status-WIP-yellow)
+![Status](https://img.shields.io/badge/status-WIP-yellow)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)
+![AWS](https://img.shields.io/badge/Cloud-AWS-232F3E?logo=amazon-aws)
+![Lambda](https://img.shields.io/badge/Compute-Lambda-orange?logo=aws-lambda)
+![Slack Alerts](https://img.shields.io/badge/Alerts-Slack-4A154B?logo=slack)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
 
