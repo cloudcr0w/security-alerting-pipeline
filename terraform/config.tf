@@ -24,8 +24,10 @@ resource "aws_config_configuration_recorder" "main" {
 resource "aws_config_delivery_channel" "main" {
   name           = "default"
   s3_bucket_name = aws_s3_bucket.config_logs.bucket
+  sns_topic_arn  = aws_sns_topic.security_alerts.arn
   depends_on     = [aws_config_configuration_recorder.main]
 }
+
 
 resource "aws_config_configuration_recorder_status" "main" {
   name       = aws_config_configuration_recorder.main.name
