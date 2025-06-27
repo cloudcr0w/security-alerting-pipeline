@@ -74,6 +74,13 @@ ansible/ # AWS CLI provisioning
 k8s/ # Kubernetes deployment manifests
 ```
 
+## 🔔 Slack Integration – Alert Example
+
+This is a real example of a manual test alert sent via AWS Lambda → SNS → Slack.  
+The alert was triggered by a Lambda function subscribed to an SNS topic:
+
+![Slack Alert Example](docs/screenshots/slack_screenshot.png)
+
 ## Detailed Setup & Features
 
 See [docs/DETAILS.md](docs/DETAILS.md) for:
