@@ -1,5 +1,6 @@
 # AWS Security Alerting Pipeline
 
+![Built with anxiety](https://img.shields.io/badge/built%20with-anxiety-red)
 ![Status](https://img.shields.io/badge/status-WIP-yellow)
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)
 ![AWS](https://img.shields.io/badge/Cloud-AWS-232F3E?logo=amazon-aws)
