@@ -73,3 +73,22 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
+
+resource "aws_lambda_function" "slack_alert_forwarder" {
+  filename         = "../lambda/slack_alert_forwarder/slack_alert_forwarder.zip"
+  function_name    = "slack_alert_forwarder"
+  role             = aws_iam_role.lambda_exec.arn
+  handler          = "slack_alert_forwarder.lambda_handler"
+  runtime          = "python3.12"
+  source_code_hash = filebase64sha256("../lambda/slack_alert_forwarder/slack_alert_forwarder.zip")
+  memory_size      = var.lambda_memory_size
+  timeout          = var.lambda_timeout
+  tags             = local.common_tags
+
+  environment {
+    variables = {
+      SLACK_WEBHOOK_URL = var.slack_webhook_url
+    }
+  }
+}
+
