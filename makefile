@@ -26,3 +26,9 @@ logs:
 
 lint:
 	black lambda/*.py
+
+docker-build:
+	docker build -t alert-receiver ./alert-receiver
+
+docker-run:
+	docker run -p 5000:5000 alert-receiver
