@@ -10,3 +10,4 @@ COPY . .
 EXPOSE 5000
 
 CMD ["python", "main.py"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s CMD curl --fail http://localhost:5000 || exit 1
