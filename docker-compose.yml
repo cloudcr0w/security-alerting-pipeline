@@ -7,3 +7,4 @@ services:
     ports:
       - "5000:5000"
     container_name: alert-receiver
+    image: alert-receiver:latest
