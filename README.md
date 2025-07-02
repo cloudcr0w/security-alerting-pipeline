@@ -102,6 +102,14 @@ See [docs/DETAILS.md](docs/DETAILS.md) for:
 - Basics of Docker and Kubernetes for alert receiver deployment
 
 ---
+## Why This Project?
+
+The AWS Security Alerting Pipeline was created to:
+- Gain hands-on experience with Terraform, Lambda, SNS, and security services
+- Build a real-world cloud monitoring & alerting use case
+- Demonstrate cloud infrastructure skills and DevSecOps thinking
+- Provide actionable Slack/email alerts on suspicious activities in near real-time
+
 
 ## Author
 
