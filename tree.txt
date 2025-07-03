@@ -1,15 +1,13 @@
 .
+├── .flake8
 ├── .gitignore
 ├── .wslrun
-├── CONTRIBUTING.md
-├── DETAILS.md
-├── DEVLOG.md
 ├── LICENSE
-├── NOTES.md
 ├── README.md
 ├── SECURITY.md
 ├── alert-demo.txt
 ├── alert-receiver
+│   ├── .dockerignore
 │   ├── .env.example
 │   ├── Dockerfile
 │   ├── README.md
@@ -21,11 +19,24 @@
 │   ├── inventory
 │   ├── playbook.yml
 │   ├── roles
+│   │   ├── awscli
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   └── defaults
+│   │       └── main.yml
 │   └── tree.txt
-├── ci-notes.md
 ├── diagram.md
 ├── diagram.png
 ├── docker-compose.yml
+├── docs
+│   ├── ALERT-FLOWS.md
+│   ├── CONTRIBUTING.md
+│   ├── DETAILS.md
+│   ├── DEVLOG.md
+│   ├── NOTES.md
+│   ├── ci-notes.md
+│   └── screenshots
+│       └── slack_screenshot.png
 ├── k8s
 │   ├── README.md
 │   ├── deployment.yaml
@@ -33,8 +44,15 @@
 ├── lambda
 │   ├── __init__.py
 │   ├── alert_function
+│   │   ├── __init__.py
+│   │   └── alert_function.py
 │   ├── aws_config_handler
-│   └── guardduty_alert_function
+│   │   └── aws_config_handler.py
+│   ├── guardduty_alert_function
+│   │   └── guardduty_alert_function.py
+│   └── slack_alert_forwarder
+│       └── slack_alert_forwarder.py
+├── makefile
 ├── terraform
 │   ├── .terraform.lock.hcl
 │   ├── README.md
@@ -42,6 +60,8 @@
 │   ├── cloudwatch.tf
 │   ├── config.tf
 │   ├── ecs
+│   │   ├── ecr.tf
+│   │   └── main.tf
 │   ├── eventbridge.tf
 │   ├── eventbridge_config.tf
 │   ├── eventbridge_guardduty.tf
@@ -59,9 +79,10 @@
 ├── tests
 │   ├── README.md
 │   ├── cloudtrail_create_user_event.json
+│   ├── curl-test.sh
 │   ├── guardduty-ssh-brute.json
 │   ├── sample-guardduty-event.json
 │   └── terraform.tfvars.example
 └── tree.txt
 
-12 directories, 53 files
+18 directories, 68 files
