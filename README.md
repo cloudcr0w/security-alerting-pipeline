@@ -4,6 +4,8 @@
 ![Status](https://img.shields.io/badge/status-WIP-yellow)
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)
 ![AWS](https://img.shields.io/badge/Cloud-AWS-232F3E?logo=amazon-aws)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Dockerized](https://img.shields.io/badge/containerized-yes-informational)
 ![Lambda](https://img.shields.io/badge/Compute-Lambda-orange?logo=aws-lambda)
 ![Slack Alerts](https://img.shields.io/badge/Alerts-Slack-4A154B?logo=slack)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -116,7 +118,7 @@ The AWS Security Alerting Pipeline was created to:
 **Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
 🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
 
-_Last updated: June 13, 2025_
+_Last updated: July 3, 2025_
 
 ---
 
