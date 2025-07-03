@@ -112,6 +112,14 @@ The AWS Security Alerting Pipeline was created to:
 - Demonstrate cloud infrastructure skills and DevSecOps thinking
 - Provide actionable Slack/email alerts on suspicious activities in near real-time
 
+## References
+
+This project was inspired and supported by the following resources:
+
+- AWS Documentation – [AWS Config](https://docs.aws.amazon.com/config/)
+- Terraform Registry – [aws_config_config_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_config_rule)
+- Real-time alerting tutorial by FreeCodeCamp
+- Flask documentation – [https://flask.palletsprojects.com/](https://flask.palletsprojects.com/)
 
 ## Author
 
