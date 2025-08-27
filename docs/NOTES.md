@@ -1,71 +1,79 @@
 # 🗒️ Notes – AWS Security Alerting Pipeline
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
-![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
+![Updated](https://img.shields.io/badge/last_update-Aug%202025-blue)
 ![Status](https://img.shields.io/badge/project-learning-informational)
 
-Work in progress – focused on learning, improving, and building practical AWS security skills.
+Work in progress – focused on **learning AWS security, IaC, and real-time monitoring**.
 
 ---
 
-## ✅ Done – Tuesday, 16 April 2025
+## ✅ Done (as of April 2025)
 
-- ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
-- ✅ Added `outputs` for `guardduty_alert_function`
-- ✅ Verified `alert_email` variable has a proper description
-- ✅ Maintained daily GitHub commit streak 💪
-- ✅ Successfully deployed full stack using Terraform
-- ✅ Fixed CloudTrail + S3 policy for logging
-- ✅ Added logging IAM policy for Lambda (CloudWatch integration)
-- ✅ Tested GuardDuty Lambda manually via CLI
-- ✅ Cleaned up `output.json` with `.gitignore` entry
-- ✅ Updated README with Lambda test instructions
-- ✅ Added EventBridge rule to detect root user login without MFA
-- ✅ Connected alert Lambda to root login rule
-- ✅ Added permission for EventBridge to invoke Lambda
-- ✅ Successfully tested Ansible role for installing AWS CLI on localhost (Ubuntu WSL)
-- ✅ Added simple Ansible role to install AWS CLI
-- ✅ Documented Ansible structure (`README.md` + `tree.txt`)
-- ✅ Added `README.md` to `samples/` folder to explain usage
+### 🔧 Core Setup
+- Added `tags` to both Lambda functions (`Project`, `Environment`)
+- Added `outputs` for `guardduty_alert_function`
+- Verified `alert_email` variable description
+- Daily GitHub commit streak maintained 💪
+- Successfully deployed **full stack with Terraform**
+- Fixed CloudTrail + S3 policy for logging
+- Added IAM policy for Lambda → CloudWatch logging
+- Tested GuardDuty Lambda manually (CLI)
+- Cleaned up `output.json` via `.gitignore`
+- Updated README with Lambda test instructions
+- EventBridge rule: detect **root user login without MFA**
+- Connected alert Lambda to root login rule + permissions
+- Added **Ansible role** to install AWS CLI on localhost (Ubuntu WSL)
+- Documented Ansible structure (`README.md` + `tree.txt`)
+- Added `README.md` to `samples/` folder
 
----
-
-### 🔔 AWS Config – SNS & Lambda integration
-
-- ✅ Created separate `sns_config.tf` file for clarity
-- ✅ Added SNS topic: `aws-config-alerts`
-- ✅ Subscribed Lambda function `aws_config_handler` to the topic
-- ✅ Handler receives and logs Config alerts
-
-+ ✅ Manual Lambda zip used (CI/CD not implemented yet)
-+ ✅ Lambda integration tested with NON_COMPLIANT Config rule
-+ ✅ Slack webhook added to handler for real-time alerts
+### 🔔 AWS Config – SNS & Lambda Integration
+- Created `sns_config.tf` for clarity
+- Added SNS topic: `aws-config-alerts`
+- Subscribed Lambda `aws_config_handler` to the topic
+- Handler receives + logs Config alerts
+- Manual Lambda zip (no CI/CD yet)
+- Tested integration with NON_COMPLIANT rule
+- Slack webhook added → real-time alerts
 
 ---
 
-## 📌 TODO – Still thinking about it
+## 📌 TODO – Next Iterations
 
-+ ✅ Add quick Slack/Discord integration via webhook
-- [ ] Consider a separate SNS topic for GuardDuty alerts
-- [ ] Try real-time GuardDuty finding in AWS Console
-- [ ] Add consistent logging (`print()` or `logger`) to IAM alert Lambda
-- [ ] Split Lambda code into separate folders if it grows further
-- [ ] Explore more AWS Config rules (e.g. `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+### 📢 Alert Routing
+- [ ] Separate SNS topic for GuardDuty alerts
+- [ ] Route alerts by **severity/type** (different emails)
+
+### 🧑‍💻 Code Quality
+- [ ] Add consistent logging (`print()` → `logger`)
+- [ ] Split Lambda code into multiple folders if it grows
+- [ ] Brainstorm CI/CD workflow (GitHub Actions + Terraform Plan/Apply)
+
+### 🔒 Security & Rules
+- [ ] Try real-time GuardDuty finding via AWS Console
+- [ ] Add more AWS Config rules (`s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+- [ ] Add S3-related security event alerts (public bucket access)
 
 ---
 
 ## ❓ Questions to Explore
-
-- How to route alerts to different emails based on severity or type?
-- What would full CloudWatch Logs retention + metric filters setup look like?
-- Should I add support for S3 security-related events (e.g., public buckets)?
+- How to route alerts by severity/type effectively (SNS filters? EventBridge patterns?)  
+- What’s the best setup for **CloudWatch Logs retention + metric filters**?  
+- Should I extend pipeline to cover **S3 public bucket events**?  
 
 ---
 
-## 📝 Roadmap – What's next?
+## 📝 Roadmap
 
-- ✅ Clean Docker image naming (add version tag)
-- ✅ Added `README.md` to `samples/` folder to explain usage
-- [ ] Run full test for GuardDuty Lambda using sample JSON
-- [ ] Brainstorm CI/CD ideas (e.g., GitHub Actions + Terraform Plan/Apply)
-- [ ] Add CloudWatch metric filters + alarms for Lambda errors
-- [ ] (Optional) Try minimal EKS or ECS simulation for alert receiver
+**Now**
+- GuardDuty sample JSON → run full Lambda test
+- Add CloudWatch alarms for Lambda errors
+
+**Next**
+- CI/CD PoC (GitHub Actions → Terraform → Lambda update)
+- Docker image naming cleanup (add version tags)
+
+**Optional / Later**
+- EKS/ECS simulation for alert receiver  
+- Full observability integration (Prometheus/Grafana)
+
+---
