@@ -12,6 +12,7 @@
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
+  Hands-on DevSecOps project showing real-time AWS security monitoring and alerting.
 
 ## Table of Contents
 
