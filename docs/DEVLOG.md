@@ -1,85 +1,85 @@
 # 📓 DEVLOG – AWS Security Alerting Pipeline
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
-![Last Updated](https://img.shields.io/badge/updated-June%202025-blue)
+![Updated](https://img.shields.io/badge/last_update-Aug%202025-blue)
 ![Status](https://img.shields.io/badge/project-learning-informational)
 
-Work in progress – focused on learning, improving, and building practical AWS security skills.
+Ongoing project – focused on **AWS security, IaC, and DevSecOps practices**.  
+This file acts as a **changelog + learning log**, updated manually after each session.
 
 ---
 
-## ✅ Done 
-
-- ✅ Unified test files under `tests/` folder and renamed for clarity
-- ✅ Refactored Terraform to use `local.common_tags` for consistent tagging
-- ✅ Added CloudWatch log group and Lambda error alarm
-- ✅ Simplified and rewrote `README.md` and moved details to `DETAILS.md`
-- ✅ Created/updated `SECURITY.md`, `LICENSE`, `CONTRIBUTING.md`, and `DEVLOG.md`
-- ✅ Maintained commit streak 💪
-
----
-
-## ✅ Earlier 
-
-- ✅ Added `tags` to both Lambda functions (`Project`, `Environment`)
-- ✅ Added `outputs` for `guardduty_alert_function`
-- ✅ Verified `alert_email` variable has a proper description
-- ✅ Successfully deployed full stack using Terraform
-- ✅ Fixed CloudTrail + S3 policy for logging
-- ✅ Added logging IAM policy for Lambda (CloudWatch integration)
-- ✅ Tested GuardDuty Lambda manually via CLI
-- ✅ Cleaned up `output.json` with `.gitignore` entry
-- ✅ Updated README with Lambda test instructions
-- ✅ Added EventBridge rule to detect root user login without MFA
-- ✅ Connected alert Lambda to root login rule
-- ✅ Added permission for EventBridge to invoke Lambda
-- ✅ Successfully tested Ansible role for installing AWS CLI on localhost (Ubuntu WSL)
-- ✅ Added simple Ansible role to install AWS CLI
-- ✅ Documented Ansible structure (`README.md` + `tree.txt`)
-- ✅ Added `README.md` to `samples/` folder to explain usage
+## 🚀 Latest Progress
+- Unified all test files under `tests/` (renamed for clarity)
+- Refactored Terraform → using `local.common_tags` for consistent tagging
+- Added CloudWatch log group + Lambda error alarm
+- Simplified `README.md` (moved details to `DETAILS.md`)
+- Created/updated project docs: `SECURITY.md`, `LICENSE`, `CONTRIBUTING.md`, `DEVLOG.md`
+- Maintained GitHub commit streak 💪
 
 ---
 
-## 🔔 AWS Config & GuardDuty – SNS & Lambda Integration
+## 📅 Earlier Milestones
+- Added tags to all Lambdas (`Project`, `Environment`)
+- Added Terraform outputs for `guardduty_alert_function`
+- Verified `alert_email` variable with description
+- Successfully deployed **full stack via Terraform**
+- Fixed CloudTrail + S3 policy for logging
+- Added IAM policy for Lambda → CloudWatch logs
+- Tested GuardDuty Lambda manually (CLI)
+- Ignored `output.json` via `.gitignore`
+- EventBridge rule: detect **root login without MFA**
+- Linked alert Lambda with EventBridge rule + permissions
+- Built Ansible role → AWS CLI installation (Ubuntu WSL)
+- Documented Ansible structure (`README.md` + `tree.txt`)
+- Added `README.md` to `samples/` folder
 
-- ✅ Created separate `sns_config.tf` file for AWS Config clarity
-- ✅ Added SNS topic: `aws-config-alerts`
-- ✅ Subscribed Lambda function `aws_config_handler` to the topic
-- ✅ Handler receives and logs Config alerts
-- ✅ Slack webhook added to Config handler for real-time alerts
-- ✅ Created **separate SNS topic** for GuardDuty alerts
-- ✅ GuardDuty Lambda now supports **Slack and SNS alerts**
-- ✅ Improved **logging and exception handling** in all Lambda handlers
-- ✅ Split Lambda code into separate folders (per function)
-- ✅ Add CloudWatch metric filters for Lambda invocations, throttles
-- ✅ Explore more AWS Config rules (e.g., `s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+---
 
-## 📌 TODO – Next up
+## 🔔 AWS Config Integration
+- `sns_config.tf` → added for clarity
+- SNS topic `aws-config-alerts` created
+- Subscribed Lambda `aws_config_handler` to topic
+- Handler receives + logs Config alerts
+- Slack webhook added → real-time notifications
 
-- [ ] Test GuardDuty with real-time console findings
-- [ ] Add CI/CD workflow (Terraform Plan/Apply, Lambda deploy)
+---
+
+## 🛡️ GuardDuty Integration
+- Created **separate SNS topic** for GuardDuty alerts
+- GuardDuty Lambda → sends to Slack & SNS
+- Improved logging + exception handling in all handlers
+- Split Lambda code into dedicated folders
+- Added CloudWatch metric filters (invocations, throttles)
+- Explored more AWS Config rules (`s3-bucket-public-write-prohibited`, `iam-user-no-mfa`)
+
+---
+
+## 📌 TODO – Backlog
+- [ ] Test GuardDuty with **real-time console findings**
+- [ ] Add CI/CD pipeline (Terraform Plan/Apply + Lambda deploy)
 - [ ] Deploy Flask alert receiver in ECS or EKS
 
 ---
 
-## ❓ Questions to Explore
-
-- How to route alerts by severity/type (different SNS topics, filters)?
-- What’s the best way to enrich alerts (GeoIP, user identity, region)?
-- Should I support public S3 detection via CloudTrail and Config?
-
----
-
-## 🛠️ CI/CD Notes
-
-- Plan:
-  - Automatically package Lambda zip on commit
-  - Upload via GitHub Actions using AWS CLI
-  - Run `terraform fmt` and `terraform validate`
-  - Run `terraform plan` with summary
-- Later:
-  - Test Lambdas with sample payloads in GitHub Actions
-  - Auto-approve + apply for `main` branch commits
+## ❓ Open Questions
+- Best way to route alerts by **severity/type**? (SNS filters? EventBridge patterns?)
+- How to enrich alerts (GeoIP, IAM user identity, region)?
+- Should I add **S3 public access** detection (CloudTrail + Config)?
 
 ---
 
-> _This file serves as a personal changelog and learning log. Updated manually after work sessions._
+## 🛠️ CI/CD Plans
+
+**Phase 1**
+- [ ] Auto-package Lambda zip on commit  
+- [ ] Upload with GitHub Actions + AWS CLI  
+- [ ] Run `terraform fmt` + `terraform validate`  
+- [ ] Run `terraform plan` (summarized)  
+
+**Phase 2**
+- [ ] Test Lambdas with sample payloads in CI  
+- [ ] Auto-approve + apply on `main` branch commits  
+
+---
+
+📌 *This file is maintained as a dev journal – updated after each coding session.*
