@@ -52,3 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }).join("");
 });
+document.getElementById("reloadButton").addEventListener("click", () => {
+  location.reload();
+});
