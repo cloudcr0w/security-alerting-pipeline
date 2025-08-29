@@ -1,0 +1,12 @@
+/* styles.css */
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.alert-card {
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 6px solid #dc3545;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
