@@ -1,12 +1,27 @@
-/* styles.css */
 body {
   font-family: "Segoe UI", sans-serif;
+  background-color: #f8f9fa;
 }
 
 .alert-card {
   padding: 20px;
   margin-bottom: 15px;
-  border-left: 6px solid #dc3545;
+  border-left: 6px solid #dc3545; /* domyślny (ALARM) */
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.alert-state-ok {
+  border-left-color: #28a745;
+}
+
+.alert-state-warning {
+  border-left-color: #ffc107;
+}
+
+@media (max-width: 600px) {
+  .alert-card {
+    padding: 15px;
+  }
 }
