@@ -10,6 +10,8 @@
 ![Slack Alerts](https://img.shields.io/badge/Alerts-Slack-4A154B?logo=slack)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![TODO](https://img.shields.io/badge/TODO-in%20progress-blueviolet)
+
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
   Hands-on DevSecOps project showing real-time AWS security monitoring and alerting.
@@ -130,6 +132,26 @@ This project was inspired and supported by the following resources:
 _Last updated: July 3, 2025_
 
 ---
+
+---
+
+## 🚧 TODO
+
+Planned improvements and features:
+
+- [ ] ☁️ Add CloudWatch Alarms for specific metrics (e.g., unauthorized API calls)
+- [ ] 📦 Deploy alert-receiver to ECS (Fargate) or EKS with proper Terraform setup
+- [ ] 🔐 Integrate secrets manager for storing Slack webhook URL securely
+- [ ] 📊 Add CloudWatch dashboard for visual monitoring
+- [ ] 🔄 Enable automatic rotation of Lambda access keys
+- [ ] 🧪 Add more unit tests for Lambda functions (pytest)
+- [ ] 🛠️ Implement CI/CD pipeline for infrastructure and Lambda (GitHub Actions)
+- [ ] 🌍 Add multi-region support
+- [ ] 🧩 Add additional EventBridge rules (e.g., for API Gateway abuse or EC2 activity)
+- [ ] 📁 Archive alerts to S3 for long-term storage & audit
+- [ ] 📖 Write a blog post or LinkedIn article describing project use case and learnings
+
+Contributions welcome via PR! 💡
 
 ## License
 
