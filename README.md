@@ -86,17 +86,17 @@ The alert was triggered by a Lambda function subscribed to an SNS topic:
 
 ![Slack Alert Example](docs/screenshots/slack_screenshot.png)
 
-## Frontend UI (Optional)
+## Frontend UI Preview
 
-A simple Bootstrap-based frontend is included to visualize security alerts.
+This project includes an optional frontend in `/frontend` built with HTML, CSS (Bootstrap), and JS.
 
 Features:
 - Color-coded alert cards
-- Emoji based on state (ALARM / OK / WARNING)
-- Manual reload button
-- Easily extendable with real backend data (Flask / API Gateway)
+- Emoji for each state (ALARM/OK/WARNING)
+- Reload button
+- Clean and responsive design
 
-Launch it by opening `frontend/index.html` in your browser.
+Open `frontend/index.html` in browser to preview alerts locally.
 
 ![Frontend Preview](frontend/frontend-preview.png)
 
