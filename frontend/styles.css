@@ -43,3 +43,23 @@ h1 {
 .alert-card {
   animation: fadeIn 0.5s ease-in-out;
 }
+
+.alert-card h5 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.alert-card p {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .alert-card h5 {
+    font-size: 1.1rem;
+  }
+}
