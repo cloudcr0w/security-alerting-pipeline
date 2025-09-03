@@ -74,3 +74,29 @@ resource "aws_cloudwatch_metric_alarm" "lambda_throttle_alarm" {
   alarm_description   = "Alarm when Lambda throttling occurs"
   treat_missing_data  = "notBreaching"
 }
+resource "aws_cloudwatch_log_metric_filter" "unauthorized_operation" {
+  name           = "UnauthorizedOperationMetric"
+  log_group_name = var.cloudtrail_log_group_name
+
+  pattern = "{ ($.errorCode = \"UnauthorizedOperation\") || ($.errorCode = \"AccessDenied\") }"
+
+  metric_transformation {
+    name      = "UnauthorizedOperations"
+    namespace = "SecurityPipeline"
+    value     = "1"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "unauthorized_operation_alarm" {
+  alarm_name          = "UnauthorizedOperationAlarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "UnauthorizedOperations"
+  namespace           = "SecurityPipeline"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 1
+
+  alarm_description = "Detects unauthorized API calls (AccessDenied or UnauthorizedOperation)"
+  alarm_actions = [aws_sns_topic.security_alerts.arn]
+}
