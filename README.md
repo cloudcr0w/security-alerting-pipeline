@@ -147,12 +147,12 @@ _Last updated: July 3, 2025_
 
 ---
 
----
 
 ## 🚧 TODO
 
 Planned improvements and features:
 
+- [x] 🎨 Add basic frontend dashboard (HTML + Bootstrap)
 - [ ] ☁️ Add CloudWatch Alarms for specific metrics (e.g., unauthorized API calls)
 - [ ] 📦 Deploy alert-receiver to ECS (Fargate) or EKS with proper Terraform setup
 - [ ] 🔐 Integrate secrets manager for storing Slack webhook URL securely
