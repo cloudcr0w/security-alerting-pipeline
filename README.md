@@ -153,19 +153,18 @@ _Last updated: July 3, 2025_
 Planned improvements and features:
 
 - [x] 🎨 Add basic frontend dashboard (HTML + Bootstrap)
+- [x] 🧪 Add unit tests for Lambda functions (pytest)
+- [x] 🔁 Refactor Lambda folder for better test discovery and modularity
 - [ ] ☁️ Add CloudWatch Alarms for specific metrics (e.g., unauthorized API calls)
 - [ ] 📦 Deploy alert-receiver to ECS (Fargate) or EKS with proper Terraform setup
 - [ ] 🔐 Integrate secrets manager for storing Slack webhook URL securely
 - [ ] 📊 Add CloudWatch dashboard for visual monitoring
 - [ ] 🔄 Enable automatic rotation of Lambda access keys
-- [ ] 🧪 Add more unit tests for Lambda functions (pytest)
 - [ ] 🛠️ Implement CI/CD pipeline for infrastructure and Lambda (GitHub Actions)
 - [ ] 🌍 Add multi-region support
 - [ ] 🧩 Add additional EventBridge rules (e.g., for API Gateway abuse or EC2 activity)
 - [ ] 📁 Archive alerts to S3 for long-term storage & audit
 - [ ] 📖 Write a blog post or LinkedIn article describing project use case and learnings
-
-Contributions welcome via PR! 💡
 
 ## License
 
