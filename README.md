@@ -181,3 +181,8 @@ For vulnerability reports, please see [SECURITY.md](SECURITY.md)
 > "Trust me, I'm a Lambda."  
 > — this function, probably right before it timed out
 ```
+
+```markdown
+> "Monitoring without alerts is just stalking your own infrastructure."  
+> — Unknown DevOps Philosopher
+```
