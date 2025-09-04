@@ -27,5 +27,5 @@ variable "slack_webhook_url" {
 variable "cloudtrail_log_group_name" {
   description = "Name of the CloudTrail log group"
   type        = string
-  default     = "/aws/cloudtrail/my-cloudtrail-log-group" 
+  default     = "/aws/cloudtrail/my-cloudtrail-log-group"
 }

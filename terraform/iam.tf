@@ -1,6 +1,6 @@
 # IAM Role that allows Lambda to assume execution role
-resource "aws_iam_role" "lambda_exec_role" {
-  name = "lambda_exec_role"
+resource "aws_iam_role" "lambda_exec_role_v2" {
+  name = "lambda_exec_role_v2"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -20,7 +20,7 @@ resource "aws_iam_role" "lambda_exec_role" {
 # IAM inline policy to allow Lambda to publish alerts to SNS topic
 resource "aws_iam_role_policy" "lambda_publish_sns" {
   name = "lambda_publish_sns"
-  role = aws_iam_role.lambda_exec_role.id
+  role = aws_iam_role.lambda_exec_role_v2.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "lambda_publish_sns" {
 # IAM inline policy to allow Lambda to write logs to CloudWatch Logs
 resource "aws_iam_role_policy" "lambda_logging" {
   name = "lambda_logging_policy"
-  role = aws_iam_role.lambda_exec_role.id
+  role = aws_iam_role.lambda_exec_role_v2.id
 
   policy = jsonencode({
     Version = "2012-10-17",
