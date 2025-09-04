@@ -49,6 +49,11 @@ resource "aws_cloudwatch_log_metric_filter" "lambda_throttles" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "cloudtrail" {
+  name              = var.cloudtrail_log_group_name
+  retention_in_days = 30
+}
+
 resource "aws_cloudwatch_metric_alarm" "lambda_error_alarm" {
   alarm_name          = "LambdaErrorAlarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -98,5 +103,5 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_operation_alarm" {
   threshold           = 1
 
   alarm_description = "Detects unauthorized API calls (AccessDenied or UnauthorizedOperation)"
-  alarm_actions = [aws_sns_topic.security_alerts.arn]
+  alarm_actions     = [aws_sns_topic.security_alerts.arn]
 }
