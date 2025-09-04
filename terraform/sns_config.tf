@@ -1,5 +1,13 @@
 resource "aws_sns_topic" "aws_config_alerts" {
   name = "aws-config-alerts"
+
+  tags = {
+    Environment = "dev"
+  }
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "aws_sns_topic_subscription" "lambda_subscription" {
