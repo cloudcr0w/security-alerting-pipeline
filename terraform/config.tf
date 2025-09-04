@@ -1,19 +1,48 @@
+
 resource "aws_s3_bucket" "config_logs" {
   bucket = "aws-config-logs-${data.aws_caller_identity.current.account_id}"
-
   tags = {
     Name        = "AWS Config Logs"
     Environment = "security-pipeline"
   }
 }
-resource "aws_s3_bucket_acl" "config_logs_acl" {
+resource "aws_s3_bucket_policy" "config_logs_policy" {
   bucket = aws_s3_bucket.config_logs.id
-  acl    = "private"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid    = "AWSConfigBucketPermissionsCheck",
+        Effect = "Allow",
+        Principal = {
+          Service = "config.amazonaws.com"
+        },
+        Action   = "s3:GetBucketAcl",
+        Resource = "arn:aws:s3:::${aws_s3_bucket.config_logs.id}"
+      },
+      {
+        Sid    = "AWSConfigBucketDelivery",
+        Effect = "Allow",
+        Principal = {
+          Service = "config.amazonaws.com"
+        },
+        Action   = "s3:PutObject",
+        Resource = "arn:aws:s3:::${aws_s3_bucket.config_logs.id}/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+        Condition = {
+          StringEquals = {
+            "s3:x-amz-acl" = "bucket-owner-full-control"
+          }
+        }
+      }
+    ]
+  })
 }
 
 resource "aws_config_configuration_recorder" "main" {
   name     = "default"
   role_arn = aws_iam_role.config.arn
+
 
   recording_group {
     all_supported                 = true
@@ -32,6 +61,7 @@ resource "aws_config_delivery_channel" "main" {
 resource "aws_config_configuration_recorder_status" "main" {
   name       = aws_config_configuration_recorder.main.name
   is_enabled = true
+  depends_on = [aws_config_delivery_channel.main]
 }
 
 resource "aws_config_config_rule" "iam_user_no_mfa" {
@@ -39,7 +69,8 @@ resource "aws_config_config_rule" "iam_user_no_mfa" {
 
   source {
     owner             = "AWS"
-    source_identifier = "IAM_USER_NO_MFA"
+    source_identifier = "IAM_USER_MFA_ENABLED"
+
   }
 
   scope {
@@ -64,7 +95,8 @@ resource "aws_iam_role" "config" {
 
 resource "aws_iam_role_policy_attachment" "config_policy" {
   role       = aws_iam_role.config.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRole"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations"
+
 }
 resource "aws_config_config_rule" "iam_password_policy" {
   name = "iam-password-policy"
