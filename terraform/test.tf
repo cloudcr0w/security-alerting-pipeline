@@ -8,7 +8,3 @@ resource "aws_s3_bucket" "test_public_bucket" {
 
   force_destroy = true
 }
-resource "aws_s3_bucket_acl" "test_public_bucket_acl" {
-  bucket = aws_s3_bucket.test_public_bucket.id
-  acl    = "public-read"
-}
