@@ -69,28 +69,6 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 # Get AWS Account ID for Secrets Manager ARN
-# data "aws_caller_identity" "current" {}
-
-resource "aws_iam_policy" "slack_secret_access" {
-  name = "SlackSecretAccessPolicy"
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Action = [
-          "secretsmanager:GetSecretValue"
-        ],
-        Resource = "arn:aws:secretsmanager:us-east-1:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*"
-      }
-    ]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "attach_slack_secret_access" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.slack_secret_access.arn
-}
 
 resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_exec.name

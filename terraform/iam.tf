@@ -1,4 +1,6 @@
 # IAM Role that allows Lambda to assume execution role
+data "aws_caller_identity" "current" {}
+
 resource "aws_iam_role" "lambda_exec_role_v2" {
   name = "lambda_exec_role_v2"
 
@@ -51,4 +53,24 @@ resource "aws_iam_role_policy" "lambda_logging" {
       }
     ]
   })
+}
+resource "aws_iam_policy" "slack_secret_access" {
+  name = "SlackSecretAccessPolicy"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "secretsmanager:GetSecretValue"
+        ],
+        Resource = "arn:aws:secretsmanager:us-east-1:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*"
+      }
+    ]
+  })
+}
+resource "aws_iam_role_policy_attachment" "attach_slack_secret_access" {
+  role       = aws_iam_role.lambda_exec_role_v2.name
+  policy_arn = aws_iam_policy.slack_secret_access.arn
 }
