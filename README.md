@@ -174,6 +174,7 @@ Planned improvements and features:
 - [ ] 🧼 Terraform remote state (S3 + DynamoDB lock)
 - [ ] 📦 Containerize Lambda runtime for advanced dependency isolation
 - [x] Slack alert forwarding via Lambda
+- [ ] 📥 Add `README-slack.md` with payload format & debugging steps
 - [x] Manual test publishing to SNS confirmed end-to-end
 
 ## License
