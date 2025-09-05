@@ -6,17 +6,34 @@ import os
 import requests
 
 # Get environment variables
-slack_webhook_url = os.environ.get("SLACK_WEBHOOK_URL")
 sns_topic = os.environ["SNS_TOPIC_ARN"]
-
 # Set up SNS client
 sns = boto3.client("sns")
+
+def get_slack_webhook_url():
+    secret_name = "slack/webhook-url"
+    region_name = "us-east-1"
+
+    client = boto3.client("secretsmanager", region_name=region_name)
+    response = client.get_secret_value(SecretId=secret_name)
+
+    secret = json.loads(response["SecretString"])
+    return secret["webhook"]
+
+slack_webhook_url = get_slack_webhook_url()
+
 
 def lambda_handler(event, context):
     """Main Lambda handler for processing GuardDuty events."""
 
     try:
-        # Extract details from GuardDuty event
+        # msg
+        if "Records" in event and "Sns" in event["Records"][0]:
+            print("[DEBUG] Detected SNS format")
+            sns_message_str = event["Records"][0]["Sns"]["Message"]
+            event = json.loads(sns_message_str)
+
+        # Tutaj zakładamy że `event` ma już bezpośredni format GuardDuty
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
         instance_id = event["detail"]["resource"]["instanceDetails"]["instanceId"]
