@@ -1,6 +1,8 @@
 import boto3
 import json
 import urllib3
+import requests
+import os
 
 http = urllib3.PoolManager()
 
@@ -8,31 +10,46 @@ def get_slack_webhook_url(secret_name="slack/webhook-url", region_name="us-east-
     try:
         client = boto3.client("secretsmanager", region_name=region_name)
         response = client.get_secret_value(SecretId=secret_name)
-        return response["SecretString"]
+        secret = json.loads(response["SecretString"])
+        return secret["webhook"]
     except Exception as e:
         print(f"❌ Error fetching secret: {e}")
         return None
 
+slack_webhook_url = get_slack_webhook_url()
+
 def lambda_handler(event, context):
-    webhook_url = get_slack_webhook_url()
+    try:
+        print("[DEBUG] Incoming event:", json.dumps(event))
 
-    if not webhook_url:
-        print("❌ Slack webhook URL not found. Aborting.")
-        return {"statusCode": 500, "body": "Slack webhook not configured"}
+        sns_message_str = event["Records"][0]["Sns"]["Message"]
+        sns_message = json.loads(sns_message_str)
 
-    for record in event["Records"]:
-        msg = record["Sns"]["Message"]
-        payload = format_slack_message(msg)
+        finding_type = sns_message["detail"]["type"]
+        severity = sns_message["detail"]["severity"]
+        instance_id = sns_message["detail"]["resource"]["instanceDetails"]["instanceId"]
 
-        encoded_msg = json.dumps(payload).encode("utf-8")
-        resp = http.request(
-            "POST",
-            webhook_url,
-            body=encoded_msg,
-            headers={"Content-Type": "application/json"},
-            timeout=10.0
-        )
+        message = f"""
+🚨 *GuardDuty Alert* 🚨
+*Type:* {finding_type}
+*Severity:* {severity}
+*Instance ID:* {instance_id}
+"""
 
-        print(f"Slack response: {resp.status}")
+        if slack_webhook_url:
+            response = requests.post(
+                slack_webhook_url,
+                data=json.dumps({"text": message.strip()}),
+                headers={"Content-Type": "application/json"}
+            )
+            print(f"[INFO] Slack alert sent. Status: {response.status_code}")
+        else:
+            print("[WARN] No Slack webhook configured. Alert not sent.")
 
-    return {"statusCode": 200, "body": "Sent to Slack"}
+    except Exception as e:
+        print(f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}")
+
+    return {
+        "statusCode": 200,
+        "body": "GuardDuty alert forwarded to Slack"
+    }
