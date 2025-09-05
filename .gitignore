@@ -30,3 +30,20 @@ output.json
 # other
 diagram.md
 .venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+secret.json
+
+# Lambda package junk
+*.zip
+lambda_src/*/requests/
+lambda_src/*/urllib3/
+lambda_src/*/idna/
+lambda_src/*/charset_normalizer/
+lambda_src/*/certifi/
+lambda_src/*/bin/
+*.dist-info/

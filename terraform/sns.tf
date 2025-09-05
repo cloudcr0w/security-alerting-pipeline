@@ -40,3 +40,15 @@ resource "aws_sns_topic_subscription" "config_lambda" {
   protocol  = "lambda"
   endpoint  = aws_lambda_function.aws_config_handler.arn
 }
+resource "aws_sns_topic_subscription" "guardduty_lambda" {
+  topic_arn = aws_sns_topic.guardduty_alerts.arn
+  protocol  = "lambda"
+  endpoint  = aws_lambda_function.guardduty_alert_function.arn
+}
+resource "aws_lambda_permission" "allow_guardduty_sns" {
+  statement_id  = "AllowExecutionFromSNSGuardDuty"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.guardduty_alert_function.function_name
+  principal     = "sns.amazonaws.com"
+  source_arn    = aws_sns_topic.guardduty_alerts.arn
+}
