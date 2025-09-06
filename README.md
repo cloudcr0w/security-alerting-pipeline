@@ -172,6 +172,8 @@ Planned improvements and features:
 - [ ] 🧠 AI-based alert prioritization (testowy NLP scoring w Lambda)
 - [ ] 🧼 Terraform remote state (S3 + DynamoDB lock)
 - [ ] 📦 Containerize Lambda runtime for advanced dependency isolation
+- [x] Slack alert forwarding via Lambda
+- [x] Manual test publishing to SNS confirmed end-to-end
 
 ## License
 
