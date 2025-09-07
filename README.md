@@ -11,6 +11,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![TODO](https://img.shields.io/badge/TODO-in%20progress-blueviolet)
+![Updated](https://img.shields.io/badge/last_update-Sep%202025-blue)
 
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.

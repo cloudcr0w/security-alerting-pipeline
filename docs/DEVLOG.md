@@ -1,6 +1,6 @@
 # 📓 DEVLOG – AWS Security Alerting Pipeline
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=cloudcr0w.security-alerting-pipeline)
-![Updated](https://img.shields.io/badge/last_update-Aug%202025-blue)
+![Updated](https://img.shields.io/badge/last_update-Sep%202025-blue)
 ![Status](https://img.shields.io/badge/project-learning-informational)
 
 Ongoing project – focused on **AWS security, IaC, and DevSecOps practices**.  
@@ -15,6 +15,12 @@ This file acts as a **changelog + learning log**, updated manually after each se
 - Simplified `README.md` (moved details to `DETAILS.md`)
 - Created/updated project docs: `SECURITY.md`, `LICENSE`, `CONTRIBUTING.md`, `DEVLOG.md`
 - Maintained GitHub commit streak 💪
+- Lambda subscription → SNS topic `guardduty_alerts_topic`.
+- Corrections to `slack_alert_forwarder` (debug format SNS/Slack)
+- Terraform apply: performance test of SNS → Lambda → Slack subscription
+- Adding Slack alert screenshot (docs/screenshots/)
+- Updating `.gitignore` - ignoring Python packages and outputs
+- Initial configuration of Lambda subscription → AWS Config alerts
 
 ---
 
