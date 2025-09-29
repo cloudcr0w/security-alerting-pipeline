@@ -28,3 +28,8 @@ output "config_rules" {
     aws_config_config_rule.root_mfa_enabled.name
   ]
 }
+output "slack_webhook_configured" {
+  description = "Indicates whether Slack webhook is configured"
+  value       = var.slack_webhook_url != "" ? true : false
+  sensitive   = false
+}
