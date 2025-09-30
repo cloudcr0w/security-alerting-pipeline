@@ -57,6 +57,21 @@ Detects suspicious activity like:
 | Optional UI   | Flask receiver in Docker/K8s       |
 
 ---
+## Alert Flow
+
+```bash
+
+GuardDuty/Config/EventBridge
+        │
+        ▼
+       SNS
+        │
+        ▼
+     Lambda
+        │
+        ▼
+      Slack
+```
 
 ## Architecture
 
