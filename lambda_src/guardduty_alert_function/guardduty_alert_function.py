@@ -25,7 +25,7 @@ slack_webhook_url = get_slack_webhook_url()
 
 def lambda_handler(event, context):
     """Main Lambda handler for processing GuardDuty events."""
-
+    print("DEBUG event:", event)
     try:
         # msg
         if "Records" in event and "Sns" in event["Records"][0]:
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
             sns_message_str = event["Records"][0]["Sns"]["Message"]
             event = json.loads(sns_message_str)
 
-        # Tutaj zakładamy że `event` ma już bezpośredni format GuardDuty
+        
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
         instance_id = event["detail"]["resource"]["instanceDetails"]["instanceId"]
