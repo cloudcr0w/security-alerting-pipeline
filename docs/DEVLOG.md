@@ -65,6 +65,10 @@ This file acts as a **changelog + learning log**, updated manually after each se
 - [ ] Add CI/CD pipeline (Terraform Plan/Apply + Lambda deploy)
 - [ ] Deploy Flask alert receiver in ECS or EKS
 
+## Known Issues
+- SNS retries may cause duplicate Slack messages  
+- Lambda cold starts increase alert latency (~2s)  
+
 ---
 
 ## ❓ Open Questions
