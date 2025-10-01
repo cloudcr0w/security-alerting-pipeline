@@ -33,3 +33,7 @@ output "slack_webhook_configured" {
   value       = var.slack_webhook_url != "" ? true : false
   sensitive   = false
 }
+output "cloudtrail_log_group_name" {
+  description = "CloudTrail log group used for alerting"
+  value       = var.cloudtrail_log_group_name
+}
