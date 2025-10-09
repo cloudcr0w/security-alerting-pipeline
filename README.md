@@ -31,6 +31,12 @@
 - [Security Policy](#security-policy)
 
 ---
+##  FinOps Considerations
+
+- **CloudTrail** → 1 copy of management events free; extra data events incur cost.  
+- **GuardDuty** → free 30-day trial, then charges per GB of logs analyzed.  
+- Recommended: enable **AWS Budgets** alerts to monitor GuardDuty spend.  
+
 
 ## Initial Use Case
 > Detect and alert when a new IAM user is created (`CreateUser` event in AWS CloudTrail).
