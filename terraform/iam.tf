@@ -3,7 +3,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "lambda_exec_role_v2" {
   name = "lambda_exec_role_v2"
-
+  description = "Execution role for Lambda functions in Security Alerting Pipeline"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
@@ -56,7 +56,7 @@ resource "aws_iam_role_policy" "lambda_logging" {
 }
 resource "aws_iam_policy" "slack_secret_access" {
   name = "SlackSecretAccessPolicy"
-
+  description = "Managed policy for Slack webhook secret"
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
