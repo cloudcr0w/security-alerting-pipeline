@@ -183,9 +183,9 @@ Planned improvements and features:
 - [ ] ☁️ Add CloudWatch Alarms for specific metrics (e.g., unauthorized API calls)
 - [ ] 📦 Deploy alert-receiver to ECS (Fargate) or EKS with proper Terraform setup
 - [x] 🔐 Integrate secrets manager for storing Slack webhook URL securely
-- [ ] 📊 Add CloudWatch dashboard for visual monitoring
+- [x] 📊 Add CloudWatch dashboard for visual monitoring
 - [ ] 🔄 Enable automatic rotation of Lambda access keys
-- [ ] 🛠️ Implement CI/CD pipeline for infrastructure and Lambda (GitHub Actions)
+- [x] 🛠️ Implement CI/CD pipeline for infrastructure and Lambda (GitHub Actions)
 - [ ] 🌍 Add multi-region support
 - [ ] 🧩 Add additional EventBridge rules (e.g., for API Gateway abuse or EC2 activity)
 - [ ] 📁 Archive alerts to S3 for long-term storage & audit
