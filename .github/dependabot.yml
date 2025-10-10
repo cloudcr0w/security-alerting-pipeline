@@ -3,9 +3,17 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule: { interval: "weekly" }
+    open-pull-requests-limit: 2
+
   - package-ecosystem: "docker"
     directory: "/alert-receiver"
     schedule: { interval: "weekly" }
+    open-pull-requests-limit: 2
+    ignore:
+      - dependency-name: "python"
+        update-types: ["version-update:semver-major"]   
+
   - package-ecosystem: "terraform"
     directory: "/terraform"
     schedule: { interval: "weekly" }
+    open-pull-requests-limit: 2
