@@ -11,7 +11,12 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![TODO](https://img.shields.io/badge/TODO-in%20progress-blueviolet)
-![Updated](https://img.shields.io/badge/last_update-Sep%202025-blue)
+![Updated](https://img.shields.io/badge/last_update-Oct%202025-blue)
+![CI](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/ci-python.yml/badge.svg)
+![IaC Security](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/iac-security.yml/badge.svg)
+![Docker Scan](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/docker-alert-receiver.yml/badge.svg)
+![K8s Lint](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/k8s-lint.yml/badge.svg)
+![CodeQL](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/codeql.yml/badge.svg)
 
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
@@ -134,6 +139,16 @@ See [docs/DETAILS.md](docs/DETAILS.md) for:
 - Lambda test CLI commands  
 - Slack integration setup  
 - Roadmap and future improvements
+
+---
+
+### 🧩 CI/CD overview
+- 🧪 Python tests & lint (pytest, flake8, black)
+- ☁️ Terraform fmt/validate + tfsec + Checkov
+- 🐳 Docker build & Trivy image scan
+- 🔒 CodeQL SAST analysis
+- ⚙️ K8s manifests validation (kubeconform)
+- 🤖 Weekly dependabot updates
 
 ---
 
