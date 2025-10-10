@@ -2,9 +2,13 @@ import boto3
 import json
 import urllib3
 import requests
-import os
+from __future__ import annotations
+
+# import os
+
 
 http = urllib3.PoolManager()
+
 
 def get_slack_webhook_url(secret_name="slack/webhook-url", region_name="us-east-1"):
     try:
@@ -16,7 +20,9 @@ def get_slack_webhook_url(secret_name="slack/webhook-url", region_name="us-east-
         print(f"❌ Error fetching secret: {e}")
         return None
 
+
 slack_webhook_url = get_slack_webhook_url()
+
 
 def lambda_handler(event, context):
     try:
@@ -40,16 +46,15 @@ def lambda_handler(event, context):
             response = requests.post(
                 slack_webhook_url,
                 data=json.dumps({"text": message.strip()}),
-                headers={"Content-Type": "application/json"}
+                headers={"Content-Type": "application/json"},
             )
             print(f"[INFO] Slack alert sent. Status: {response.status_code}")
         else:
             print("[WARN] No Slack webhook configured. Alert not sent.")
 
     except Exception as e:
-        print(f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}")
+        print(
+            f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}"
+        )
 
-    return {
-        "statusCode": 200,
-        "body": "GuardDuty alert forwarded to Slack"
-    }
+    return {"statusCode": 200, "body": "GuardDuty alert forwarded to Slack"}

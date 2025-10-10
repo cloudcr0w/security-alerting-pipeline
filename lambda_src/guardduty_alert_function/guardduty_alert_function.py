@@ -10,6 +10,7 @@ sns_topic = os.environ["SNS_TOPIC_ARN"]
 # Set up SNS client
 sns = boto3.client("sns")
 
+
 def get_slack_webhook_url():
     secret_name = "slack/webhook-url"
     region_name = os.getenv("AWS_REGION", "us-east-1")
@@ -39,7 +40,6 @@ def lambda_handler(event, context):
             sns_message_str = event["Records"][0]["Sns"]["Message"]
             event = json.loads(sns_message_str)
 
-        
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
         instance_id = event["detail"]["resource"]["instanceDetails"]["instanceId"]
@@ -56,21 +56,20 @@ def lambda_handler(event, context):
             response = requests.post(
                 slack_webhook_url,
                 data=json.dumps({"text": message.strip()}),
-                headers={"Content-Type": "application/json"}
+                headers={"Content-Type": "application/json"},
             )
             print(f"[INFO] Slack alert sent. Status: {response.status_code}")
         else:
             sns_response = sns.publish(
                 TopicArn=sns_topic,
                 Subject=f"GuardDuty Alert - {finding_type}",
-                Message=message.strip()
+                Message=message.strip(),
             )
             print(f"[INFO] SNS alert sent. Message ID: {sns_response['MessageId']}")
 
     except Exception as e:
-        print(f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}")
+        print(
+            f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}"
+        )
 
-    return {
-        "statusCode": 200,
-        "body": "GuardDuty alert processed"
-    }
+    return {"statusCode": 200, "body": "GuardDuty alert processed"}
