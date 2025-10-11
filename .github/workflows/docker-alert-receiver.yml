@@ -1,0 +1,22 @@
+name: Alert Receiver – Build & Scan
+on:
+  push:
+    paths:
+      - "alert-receiver/**"
+      - "docker-compose.yml"
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t alert-receiver:ci ./alert-receiver
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: "alert-receiver:ci"
+          vuln-type: "os,library"
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
