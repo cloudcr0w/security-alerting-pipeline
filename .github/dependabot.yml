@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "docker"
+    directory: "/alert-receiver"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "terraform"
+    directory: "/terraform"
+    schedule: { interval: "weekly" }
