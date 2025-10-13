@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: alert-receiver
+  labels:
+    app: alert-receiver
 spec:
   replicas: 1
   selector:
@@ -17,13 +19,32 @@ spec:
           image: alert-receiver:latest
           ports:
             - containerPort: 5000
-
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: alert-receiver-service
+  labels:
+    app: alert-receiver
 spec:
   selector:
     app: alert-receiver
