@@ -1,0 +1,16 @@
+{
+  "detail-type": "GuardDuty Finding",
+  "source": "aws.guardduty",
+  "detail": {
+    "title": "Recon:EC2/PortProbeUnprotectedPort",
+    "description": "Unprotected port on EC2 instance",
+    "severity": 5.3,
+    "region": "eu-central-1",
+    "resource": {
+      "resourceType": "Instance",
+      "instanceDetails": {
+        "instanceId": "i-0abcdef1234567890"
+      }
+    }
+  }
+}
