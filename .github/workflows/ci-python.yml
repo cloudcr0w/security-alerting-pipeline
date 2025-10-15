@@ -24,7 +24,7 @@ jobs:
       - name: Black (check-only)
         run: |
           pip install black
-          black --check lambda_src tests
+          black --check --exclude "(requests|urllib3|idna|charset_normalizer|certifi|bin)" lambda_src tests
       - name: Run tests (pytest + coverage)
         run: |
           pip install coverage

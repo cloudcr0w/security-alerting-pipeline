@@ -1,8 +1,9 @@
 """Lambda function to process IAM CloudTrail events and send formatted security alerts via SNS."""
 
 import json
-import boto3
 import os
+
+import boto3
 
 
 def lambda_handler(event, context):

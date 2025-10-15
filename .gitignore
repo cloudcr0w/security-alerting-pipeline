@@ -47,3 +47,13 @@ lambda_src/*/charset_normalizer/
 lambda_src/*/certifi/
 lambda_src/*/bin/
 *.dist-info/
+
+
+# vendored libs accidentally added by formatters
+lambda_src/**/requests/
+lambda_src/**/urllib3/
+lambda_src/**/idna/
+lambda_src/**/charset_normalizer/
+lambda_src/**/certifi/
+lambda_src/**/bin/
+EOF

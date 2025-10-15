@@ -1,5 +1,14 @@
 [flake8]
 max-line-length = 120
 extend-ignore = E203, W503
+exclude =
+    .venv,
+    lambda_src/**/requests/*,
+    lambda_src/**/urllib3/*,
+    lambda_src/**/idna/*,
+    lambda_src/**/charset_normalizer/*,
+    lambda_src/**/certifi/*,
+    lambda_src/**/bin/*
 per-file-ignores =
     tests/*: E402, F401, E401
+    lambda_src/tests/*: E402, F401, E401
