@@ -12,13 +12,17 @@ sns = boto3.client("sns")
 
 def get_slack_webhook_url():
     secret_name = "slack/webhook-url"
-    region_name = "us-east-1"
+    region_name = os.getenv("AWS_REGION", "us-east-1")
 
-    client = boto3.client("secretsmanager", region_name=region_name)
-    response = client.get_secret_value(SecretId=secret_name)
+    try:
+        client = boto3.client("secretsmanager", region_name=region_name)
+        response = client.get_secret_value(SecretId=secret_name)
+        secret = json.loads(response["SecretString"])
+        return secret.get("webhook") or secret.get("SLACK_WEBHOOK_URL")
+    except Exception as e:
+        print(f"[WARN] Falling back to env Slack webhook: {e}")
+        return os.getenv("SLACK_WEBHOOK_URL")
 
-    secret = json.loads(response["SecretString"])
-    return secret["webhook"]
 
 slack_webhook_url = get_slack_webhook_url()
 
