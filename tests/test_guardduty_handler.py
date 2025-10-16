@@ -1,8 +1,12 @@
 import os, sys, json, types, importlib, pkgutil, pathlib, pytest
 
 # --- ENV zanim zaimportuje lambdę ---
-os.environ.setdefault("SNS_TOPIC_ARN", "arn:aws:sns:eu-central-1:111111111111:dummy-topic")
-os.environ.setdefault("SLACK_WEBHOOK_URL", "https://hooks.slack.com/services/T/DUMMY/DUMMY")
+os.environ.setdefault(
+    "SNS_TOPIC_ARN", "arn:aws:sns:eu-central-1:111111111111:dummy-topic"
+)
+os.environ.setdefault(
+    "SLACK_WEBHOOK_URL", "https://hooks.slack.com/services/T/DUMMY/DUMMY"
+)
 os.environ.setdefault("AWS_REGION", "eu-central-1")
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -10,6 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 PKG_NAME = "lambda_src"
+
 
 class DummySecretsManager:
     def get_secret_value(self, SecretId):
@@ -19,10 +24,10 @@ class DummySecretsManager:
         }
 
 
-
 class DummySNS:
     def publish(self, **kwargs):
         return {"MessageId": "fake-1234"}
+
 
 def _boto3_client(service_name, *a, **k):
     if service_name == "secretsmanager":
@@ -30,6 +35,7 @@ def _boto3_client(service_name, *a, **k):
     if service_name == "sns":
         return DummySNS()
     return types.SimpleNamespace()
+
 
 fake_boto3 = types.ModuleType("boto3")
 fake_boto3.client = _boto3_client
@@ -51,7 +57,9 @@ def _discover_lambda_handler():
 
     pkg = importlib.import_module(PKG_NAME)
     pkg_path = pathlib.Path(pkg.__file__).parent
-    for finder, name, ispkg in pkgutil.walk_packages([str(pkg_path)], prefix=f"{PKG_NAME}."):
+    for finder, name, ispkg in pkgutil.walk_packages(
+        [str(pkg_path)], prefix=f"{PKG_NAME}."
+    ):
         if ispkg:
             continue
         sys.modules.pop(name, None)

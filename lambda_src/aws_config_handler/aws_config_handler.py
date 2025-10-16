@@ -6,12 +6,17 @@ import requests
 
 SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
 
+
 def lambda_handler(event, context):
     print("[INFO] Lambda triggered with AWS Config alert:")
     print(json.dumps(event, indent=2))
 
     try:
-        compliance_type = event.get("detail", {}).get("newEvaluationResult", {}).get("complianceType", "UNKNOWN")
+        compliance_type = (
+            event.get("detail", {})
+            .get("newEvaluationResult", {})
+            .get("complianceType", "UNKNOWN")
+        )
         rule_name = event.get("detail", {}).get("configRuleName", "UnknownRule")
 
         print(f"[INFO] Rule: {rule_name}, Compliance status: {compliance_type}")
@@ -26,7 +31,7 @@ def lambda_handler(event, context):
                     response = requests.post(
                         SLACK_WEBHOOK_URL,
                         data=json.dumps(message),
-                        headers={"Content-Type": "application/json"}
+                        headers={"Content-Type": "application/json"},
                     )
                     print(f"[INFO] Sent to Slack. Status: {response.status_code}")
                 except Exception as e:
@@ -37,6 +42,8 @@ def lambda_handler(event, context):
             print("[INFO] Resource is compliant. No alert sent.")
 
     except Exception as e:
-        print(f"[ERROR] Exception during AWS Config event processing: {type(e).__name__}: {e}")
+        print(
+            f"[ERROR] Exception during AWS Config event processing: {type(e).__name__}: {e}"
+        )
 
     return {"status": "ok"}

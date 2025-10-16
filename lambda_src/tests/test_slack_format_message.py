@@ -2,6 +2,7 @@ from lambda_src.slack_alert_forwarder.slack_alert_forwarder import format_slack_
 
 import json
 
+
 def test_format_slack_message_guardduty():
     event = {
         "detail-type": "GuardDuty Finding",
@@ -10,8 +11,8 @@ def test_format_slack_message_guardduty():
             "region": "us-east-1",
             "severity": 5,
             "title": "EC2 Port Scan",
-            "updatedAt": "2025-09-01T12:00:00Z"
-        }
+            "updatedAt": "2025-09-01T12:00:00Z",
+        },
     }
 
     event_str = json.dumps(event)
