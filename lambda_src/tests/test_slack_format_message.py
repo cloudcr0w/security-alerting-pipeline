@@ -8,7 +8,9 @@ from importlib import import_module
 class DummySecretsManager:
     def get_secret_value(self, SecretId):
         # produkcja zwykle robi json.loads(response["SecretString"]) i oczekuje klucza 'webhook'
-        return {"SecretString": '{"webhook":"https://hooks.slack.com/services/T/DUMMY/DUMMY"}'}
+        return {
+            "SecretString": '{"webhook":"https://hooks.slack.com/services/T/DUMMY/DUMMY"}'
+        }
 
 
 class DummySNS:
@@ -53,7 +55,11 @@ for name in CANDIDATES:
 
 
 # fallback: adapter na bazie lambda_handler, jeśli nie ma formattera
-if _format_fn is None and hasattr(mod, "lambda_handler") and callable(mod.lambda_handler):
+if (
+    _format_fn is None
+    and hasattr(mod, "lambda_handler")
+    and callable(mod.lambda_handler)
+):
 
     def _format_fn(payload):
         # ujednolicenie wejścia (str → dict)
