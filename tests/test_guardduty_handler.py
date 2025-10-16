@@ -1,4 +1,12 @@
-import os, sys, json, types, importlib, pkgutil, pathlib, pytest
+import importlib
+import json
+import os
+import pathlib
+import pkgutil
+import sys
+import types
+
+import pytest
 
 # --- ENV zanim zaimportuje lambdę ---
 os.environ.setdefault(

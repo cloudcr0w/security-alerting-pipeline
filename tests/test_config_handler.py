@@ -1,4 +1,11 @@
-import json, os, sys, types, importlib, pathlib, pytest
+import importlib
+import json
+import os
+import pathlib
+import sys
+import types
+
+import pytest
 
 os.environ.setdefault("AWS_REGION", "eu-central-1")
 os.environ.setdefault(
