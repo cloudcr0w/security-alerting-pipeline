@@ -1,6 +1,6 @@
 import os, sys, json, types, importlib, pkgutil, pathlib, pytest
 
-# --- ENV zanim zaimportujemy lambdę ---
+# --- ENV zanim zaimportuje lambdę ---
 os.environ.setdefault("SNS_TOPIC_ARN", "arn:aws:sns:eu-central-1:111111111111:dummy-topic")
 os.environ.setdefault("SLACK_WEBHOOK_URL", "https://hooks.slack.com/services/T/DUMMY/DUMMY")
 os.environ.setdefault("AWS_REGION", "eu-central-1")
@@ -40,7 +40,7 @@ def _discover_lambda_handler():
     """Znajdź lambda_handler — użyj LAMBDA_MODULE albo przeszukaj lambda_src/* ."""
     mod_name = os.getenv("LAMBDA_MODULE")
     if mod_name:
-        # Czyść cache importów, żeby mieć pewność użycia naszego mocka
+        # Czyść cache importów, żeby mieć pewność użycia mocka
         for i in range(1, len(mod_name.split(".")) + 1):
             sys.modules.pop(".".join(mod_name.split(".")[:i]), None)
         mod = importlib.import_module(mod_name)

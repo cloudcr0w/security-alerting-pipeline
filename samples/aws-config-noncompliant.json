@@ -1,0 +1,4 @@
+{
+  "invokingEvent": "{\"configurationItem\": {\"resourceType\": \"AWS::S3::Bucket\", \"resourceId\": \"bucket-1234\"}, \"messageType\": \"ConfigurationItemChangeNotification\"}",
+  "ruleParameters": "{\"tagKey\": \"Environment\", \"tagValue\": \"Prod\"}"
+}
