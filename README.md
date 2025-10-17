@@ -151,6 +151,15 @@ See [docs/DETAILS.md](docs/DETAILS.md) for:
 - 🤖 Weekly dependabot updates
 
 ---
+## 🧪 Tests & CI Status
+
+| Pipeline | Status |
+|-----------|--------|
+| Python Tests | ![Python CI](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/ci-python.yml/badge.svg) |
+| Terraform Lint | ![IaC Security](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/iac-security.yml/badge.svg) |
+| CodeQL | ![CodeQL](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/codeql.yml/badge.svg) |
+
+All core Lambda functions are now covered by unit tests with mocked AWS services.
 
 ## What I Learned
 
