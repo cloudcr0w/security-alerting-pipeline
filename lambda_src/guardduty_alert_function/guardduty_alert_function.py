@@ -1,8 +1,9 @@
 """Lambda function to process GuardDuty findings and send alerts to SNS or Slack."""
 
 import json
-import boto3
 import os
+
+import boto3
 import requests
 
 # Get environment variables

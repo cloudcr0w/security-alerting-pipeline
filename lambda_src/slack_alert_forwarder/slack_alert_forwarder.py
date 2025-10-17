@@ -1,8 +1,10 @@
-import boto3
-import json
-import urllib3
-import requests
 from __future__ import annotations
+
+import json
+
+import boto3
+import requests
+import urllib3
 
 # import os
 
