@@ -1,9 +1,8 @@
-# -------- Settings --------
 TF_DIR        ?= terraform
 AWS_REGION    ?= eu-central-1
 AWS_PROFILE   ?= default
-ENV           ?= dev                        # nazwa środowiska (opcjonalnie)
-TF_VAR_FILE   ?= $(TF_DIR)/env/$(ENV).tfvars # jeśli nie używasz, usuń flagi -var-file
+ENV           ?= dev
+TF_VAR_FILE   ?= $(TF_DIR)/env/$(ENV).tfvars
 LAMBDA_FN     ?= security-alert-function
 CFG_LAMBDA_FN ?= aws_config_handler
 LOG_GROUP     ?= /aws/lambda/$(LAMBDA_FN)
@@ -18,24 +17,22 @@ SAMPLES_DIR   := samples
 SAMPLE_EVENT  := $(SAMPLES_DIR)/sample-event.json
 SAMPLE_CFG    := $(SAMPLES_DIR)/aws-config-noncompliant.json
 
-# -------- Phony --------
 .PHONY: help init fmt validate plan apply destroy \
-        lint test test-lambda test-config-lambda logs \
+        lint test preflight test-lambda test-config-lambda logs \
         docker-build docker-run docker-scan \
         k8s-apply k8s-delete pre-commit-all ci-all
 
-# -------- Help --------
 help:
 	@echo "Targets:"
-	@echo "  init / fmt / validate / plan / apply / destroy    - Terraform lifecycle"
-	@echo "  lint / test                                       - Python lint & tests"
-	@echo "  test-lambda / test-config-lambda / logs           - AWS Lambda helpers"
-	@echo "  docker-build / docker-run / docker-scan           - Alert Receiver docker"
-	@echo "  k8s-apply / k8s-delete                            - Apply/delete k8s manifests"
-	@echo "  pre-commit-all                                    - Run pre-commit on all files"
-	@echo "  ci-all                                            - Local CI suite"
+	@echo "  init / fmt / validate / plan / apply / destroy"
+	@echo "  lint / test"
+	@echo "  preflight"
+	@echo "  test-lambda / test-config-lambda / logs"
+	@echo "  docker-build / docker-run / docker-scan"
+	@echo "  k8s-apply / k8s-delete"
+	@echo "  pre-commit-all"
+	@echo "  ci-all"
 
-# -------- Terraform --------
 init:
 	cd $(TF_DIR) && AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) terraform init
 
@@ -57,14 +54,20 @@ destroy:
 	cd $(TF_DIR) && AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) \
 	terraform destroy -var-file="$(TF_VAR_FILE)"
 
-# -------- Python (Lambda) --------
 lint:
-	flake8 $(PY_SRC) $(PY_TESTS) && black --check $(PY_SRC) $(PY_TESTS)
+	flake8 $(PY_SRC) $(PY_TESTS) && \
+	black --check --exclude "(requests|urllib3|idna|charset_normalizer|certifi|bin)" $(PY_SRC) $(PY_TESTS)
 
 test:
 	pytest -q --maxfail=1 --disable-warnings
 
-# -------- Lambda manual invoke --------
+preflight: fmt
+	@echo "Preflight: terraform plan + unit tests"
+	cd $(TF_DIR) && AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) terraform init -backend=false
+	cd $(TF_DIR) && AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) \
+		terraform plan -no-color -var-file="$(TF_VAR_FILE)" -out=tfplan
+	PYTHONPATH=. pytest -q --maxfail=1 --disable-warnings
+
 test-lambda:
 	AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) \
 	aws lambda invoke --function-name $(LAMBDA_FN) \
@@ -79,29 +82,24 @@ logs:
 	AWS_REGION=$(AWS_REGION) AWS_PROFILE=$(AWS_PROFILE) \
 	aws logs tail $(LOG_GROUP) --follow
 
-# -------- Docker (alert-receiver) --------
 docker-build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) ./alert-receiver
 
 docker-run:
 	docker run --rm -p 5000:5000 $(IMAGE_NAME):$(IMAGE_TAG)
 
-# wymaga zainstalowanego trivy lokalnie
 docker-scan:
 	trivy image --ignore-unfixed --severity HIGH,CRITICAL $(IMAGE_NAME):$(IMAGE_TAG)
 
-# -------- Kubernetes --------
 k8s-apply:
 	kubectl apply -f k8s/
 
 k8s-delete:
 	kubectl delete -f k8s/ || true
 
-# -------- Repo hygiene --------
 pre-commit-all:
 	pre-commit run --all-files
 
-# -------- Full local CI --------
 ci-all:
-	@echo "Running local CI: fmt → validate → lint → test → docker build → k8s lint(apply optional)"
+	@echo "Running local CI: fmt → validate → lint → test → docker build"
 	$(MAKE) fmt validate lint test docker-build
