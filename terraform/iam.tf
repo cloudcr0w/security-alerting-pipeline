@@ -1,8 +1,9 @@
 # IAM Role that allows Lambda to assume execution role
 data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
 
 resource "aws_iam_role" "lambda_exec_role_v2" {
-  name = "lambda_exec_role_v2"
+  name        = "lambda_exec_role_v2"
   description = "Execution role for Lambda functions in Security Alerting Pipeline"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -49,13 +50,15 @@ resource "aws_iam_role_policy" "lambda_logging" {
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-        Resource = "arn:aws:logs:*:*:*"
+        Resource = [
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/*:*"
+        ]
       }
     ]
   })
 }
 resource "aws_iam_policy" "slack_secret_access" {
-  name = "SlackSecretAccessPolicy"
+  name        = "SlackSecretAccessPolicy"
   description = "Managed policy for Slack webhook secret"
   policy = jsonencode({
     Version = "2012-10-17",
@@ -65,8 +68,7 @@ resource "aws_iam_policy" "slack_secret_access" {
         Action = [
           "secretsmanager:GetSecretValue"
         ],
-        Resource = "arn:aws:secretsmanager:us-east-1:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*"
-      }
+      Resource = "arn:aws:secretsmanager:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*" }
     ]
   })
 }
