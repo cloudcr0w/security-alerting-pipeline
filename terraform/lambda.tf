@@ -134,7 +134,7 @@ resource "aws_lambda_function" "slack_alert_forwarder" {
   timeout     = var.lambda_timeout
   tags        = local.common_tags
 
- 
+
   environment {
     variables = {}
   }
