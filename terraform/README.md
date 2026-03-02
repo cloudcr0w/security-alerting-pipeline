@@ -16,6 +16,15 @@
 To simulate a violation, deploy the `test.tf` S3 bucket with public read access.  
 Then check AWS Config for a NON_COMPLIANT status and look at logs in CloudWatch from the alert Lambda.
 
-## 🧱 Project Tree
+## 🔐 Remote State & Locking
 
-Current file structure: [`tree.txt`](../tree.txt)
+Terraform state is stored remotely in an S3 bucket with DynamoDB locking enabled.
+
+Benefits:
+- Prevents state corruption from concurrent runs
+- Enables collaborative infrastructure management
+- State encryption enabled at rest
+
+Before running `terraform init`, ensure:
+- S3 bucket exists
+- DynamoDB table for locking exists
