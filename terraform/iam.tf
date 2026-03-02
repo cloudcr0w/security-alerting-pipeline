@@ -51,7 +51,7 @@ resource "aws_iam_role_policy" "lambda_logging" {
           "logs:PutLogEvents"
         ],
         Resource = [
-          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/*:*"
+          "arn:aws:logs:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/*:*"
         ]
       }
     ]
@@ -68,7 +68,7 @@ resource "aws_iam_policy" "slack_secret_access" {
         Action = [
           "secretsmanager:GetSecretValue"
         ],
-      Resource = "arn:aws:secretsmanager:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*" }
+      Resource = "arn:aws:secretsmanager:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:secret:slack/webhook-url*" }
     ]
   })
 }
