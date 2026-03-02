@@ -31,7 +31,7 @@ output "config_rules" {
 output "slack_webhook_configured" {
   description = "Indicates whether Slack webhook is configured"
   value       = var.slack_webhook_url != "" ? true : false
-  sensitive   = false
+  sensitive = true
 }
 output "cloudtrail_log_group_name" {
   description = "CloudTrail log group used for alerting"
