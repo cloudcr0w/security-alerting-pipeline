@@ -29,8 +29,14 @@ variable "lambda_memory_size" {
 
 # Integrations
 variable "slack_webhook_url" {
-  description = "Slack incoming webhook URL"
+  description = "Slack webhook URL for alert notifications"
+  type        = string
   sensitive   = true
+
+  validation {
+    condition     = can(regex("^https://hooks.slack.com/", var.slack_webhook_url))
+    error_message = "Slack webhook must start with https://hooks.slack.com/"
+  }
 }
 
 # Logging
