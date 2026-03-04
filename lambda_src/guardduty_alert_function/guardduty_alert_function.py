@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 # Get environment variables
 sns_topic = os.environ["SNS_TOPIC_ARN"]
 # Initialize SNS client used to publish fallback alerts
-sns = boto3.client("sns")sns = boto3.client("sns")
+sns = boto3.client("sns")
 
 
 # Retrieve Slack webhook URL from AWS Secrets Manager.
@@ -35,22 +35,23 @@ def get_slack_webhook_url():
 slack_webhook_url = get_slack_webhook_url()
 
 
-
 def lambda_handler(event, context):
-        """Main Lambda handler for processing GuardDuty events."""
+    """Main Lambda handler for processing GuardDuty events."""
+
     logger.info("GuardDuty alert handler start")
     logger.debug("Raw event: %s", json.dumps(event))
+
     try:
-        # msg
+        # GuardDuty events can arrive wrapped in SNS
         if "Records" in event and "Sns" in event["Records"][0]:
-        logger.info("Detected SNS format")            sns_message_str = event["Records"][0]["Sns"]["Message"]
+            logger.info("Detected SNS format")
+            sns_message_str = event["Records"][0]["Sns"]["Message"]
             event = json.loads(sns_message_str)
 
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
         instance_id = event["detail"]["resource"]["instanceDetails"]["instanceId"]
 
-        # Build alert message
         message = f"""
 🚨 *GuardDuty Alert* 🚨
 *Type:* {finding_type}
@@ -64,18 +65,17 @@ def lambda_handler(event, context):
                 data=json.dumps({"text": message.strip()}),
                 headers={"Content-Type": "application/json"},
             )
-            print(f"[INFO] Slack alert sent. Status: {response.status_code}")
+            logger.info("Slack alert sent. Status: %s", response.status_code)
+
         else:
             sns_response = sns.publish(
                 TopicArn=sns_topic,
                 Subject=f"GuardDuty Alert - {finding_type}",
                 Message=message.strip(),
             )
-            print(f"[INFO] SNS alert sent. Message ID: {sns_response['MessageId']}")
+            logger.info("SNS alert sent. Message ID: %s", sns_response["MessageId"])
 
     except Exception as e:
-        print(
-            f"[ERROR] Exception during GuardDuty alert processing: {type(e).__name__}: {e}"
-        )
+        logger.error("Exception during GuardDuty alert processing: %s", e)
 
     return {"statusCode": 200, "body": "GuardDuty alert processed"}
