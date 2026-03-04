@@ -36,15 +36,14 @@ slack_webhook_url = get_slack_webhook_url()
 
 
 
-    """Main Lambda handler for processing GuardDuty events."""
 def lambda_handler(event, context):
+        """Main Lambda handler for processing GuardDuty events."""
     logger.info("GuardDuty alert handler start")
     logger.debug("Raw event: %s", json.dumps(event))
     try:
         # msg
         if "Records" in event and "Sns" in event["Records"][0]:
-            print("[DEBUG] Detected SNS format")
-            sns_message_str = event["Records"][0]["Sns"]["Message"]
+        logger.info("Detected SNS format")            sns_message_str = event["Records"][0]["Sns"]["Message"]
             event = json.loads(sns_message_str)
 
         finding_type = event["detail"]["type"]
