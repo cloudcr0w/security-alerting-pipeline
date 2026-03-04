@@ -2,16 +2,22 @@
 
 import json
 import os
+import logging
 
 import boto3
 import requests
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 # Get environment variables
 sns_topic = os.environ["SNS_TOPIC_ARN"]
-# Set up SNS client
-sns = boto3.client("sns")
+# Initialize SNS client used to publish fallback alerts
+sns = boto3.client("sns")sns = boto3.client("sns")
 
 
+# Retrieve Slack webhook URL from AWS Secrets Manager.
+# If the secret cannot be accessed, fallback to environment variable.
 def get_slack_webhook_url():
     secret_name = "slack/webhook-url"
     region_name = os.getenv("AWS_REGION", "us-east-1")
@@ -29,11 +35,11 @@ def get_slack_webhook_url():
 slack_webhook_url = get_slack_webhook_url()
 
 
-def lambda_handler(event, context):
+
     """Main Lambda handler for processing GuardDuty events."""
-    print("DEBUG event:", event)
-    print("[GuardDuty] Event received:")
-    print(json.dumps(event, indent=2))
+def lambda_handler(event, context):
+    logger.info("GuardDuty alert handler start")
+    logger.debug("Raw event: %s", json.dumps(event))
     try:
         # msg
         if "Records" in event and "Sns" in event["Records"][0]:
