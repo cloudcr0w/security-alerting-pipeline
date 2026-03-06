@@ -1,4 +1,7 @@
-"""Lambda function to process GuardDuty findings and send alerts to SNS or Slack."""
+"""
+Lambda processes GuardDuty findings coming from EventBridge or SNS
+and forwards alerts to Slack or SNS topic depending on configuration.
+"""
 
 import json
 import os
