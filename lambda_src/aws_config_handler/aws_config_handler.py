@@ -33,6 +33,7 @@ def lambda_handler(event, context):
                         SLACK_WEBHOOK_URL,
                         data=json.dumps(message),
                         headers={"Content-Type": "application/json"},
+                        timeout=5,
                     )
                     print(f"[INFO] Sent to Slack. Status: {response.status_code}")
                 except Exception as e:
