@@ -6,6 +6,7 @@ and forwards alerts to Slack or SNS topic depending on configuration.
 import json
 import os
 import logging
+import resource
 
 import boto3
 import requests
@@ -53,7 +54,9 @@ def lambda_handler(event, context):
 
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
-        instance_id = event["detail"]["resource"]["instanceDetails"]["instanceId"]
+        resource = event.get("detail", {}).get("resource", {})
+        instance_details = resource.get("instanceDetails", {})
+        instance_id = instance_details.get("instanceId", "N/A")
 
         message = f"""
 🚨 *GuardDuty Alert* 🚨
