@@ -6,8 +6,6 @@ and forwards alerts to Slack or SNS topic depending on configuration.
 import json
 import os
 import logging
-import resource
-
 import boto3
 import requests
 
@@ -54,8 +52,8 @@ def lambda_handler(event, context):
 
         finding_type = event["detail"]["type"]
         severity = event["detail"]["severity"]
-        resource = event.get("detail", {}).get("resource", {})
-        instance_details = resource.get("instanceDetails", {})
+        resource_data = event.get("detail", {}).get("resource", {})
+        instance_details = resource_data.get("instanceDetails", {})
         instance_id = instance_details.get("instanceId", "N/A")
 
         message = f"""
