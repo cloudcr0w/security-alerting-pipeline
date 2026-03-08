@@ -66,13 +66,15 @@ def lambda_handler(event, context):
 """
 
         if slack_webhook_url:
-            response = requests.post(
-                slack_webhook_url,
-                data=json.dumps({"text": message.strip()}),
-                headers={"Content-Type": "application/json"},
-            )
-            logger.info("Slack alert sent. Status: %s", response.status_code)
-
+            if not slack_webhook_url.startswith("https://"):
+                logger.warning("Slack webhook URL seems invalid")
+            else:
+                response = requests.post(
+                    slack_webhook_url,
+                    data=json.dumps({"text": message.strip()}),
+                    headers={"Content-Type": "application/json"},
+                )
+                logger.info("Slack alert sent. Status: %s", response.status_code)
         else:
             sns_response = sns.publish(
                 TopicArn=sns_topic,
