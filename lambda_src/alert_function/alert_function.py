@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     event_name = event["detail"].get("eventName", "unknown-event")
 
     message = f"""
-🚨 [SECURITY ALERT]
+ [SECURITY ALERT]
 Event: {event_name}
 User: {user}
 Time: {time}
