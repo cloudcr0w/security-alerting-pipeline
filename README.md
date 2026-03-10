@@ -7,66 +7,20 @@
 ![Slack Alerts](https://img.shields.io/badge/Alerts-Slack-4A154B?logo=slack)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-![CI](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/ci-python.yml/badge.svg)
-![IaC Security](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/iac-security.yml/badge.svg)
-![Docker Scan](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/docker-alert-receiver.yml/badge.svg)
-![K8s Lint](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/k8s-lint.yml/badge.svg)
-![CodeQL](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/codeql.yml/badge.svg)
+End-to-end **AWS security monitoring and alerting pipeline** built with Terraform and Python.
 
-  End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
-  Hands-on DevSecOps project showing real-time AWS security monitoring and alerting.
-
-## Table of Contents
-
-- [Initial Use Case](#initial-use-case)
-- [Use Case](#use-case)
-- [Stack](#stack)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Detailed Setup & Features](#detailed-setup--features)
-- [What I Learned](#what-i-learned)
-- [Author](#author)
-- [License](#license)
-- [Security Policy](#security-policy)
-
----
-##  FinOps Considerations
-
-- **CloudTrail** → 1 copy of management events free; extra data events incur cost.  
-- **GuardDuty** → free 30-day trial, then charges per GB of logs analyzed.  
-- Recommended: enable **AWS Budgets** alerts to monitor GuardDuty spend.  
-
-
-## Initial Use Case
-> Detect and alert when a new IAM user is created (`CreateUser` event in AWS CloudTrail).
+The project detects suspicious cloud activity (GuardDuty findings, IAM events, configuration drift) and sends real-time alerts to Slack.
 
 ---
 
-## Use Case
-Detects suspicious activity like:
-- IAM user creation  
-- Root login without MFA  
-- GuardDuty findings (SSH brute-force, port scan)  
-- AWS Config non-compliant resources (e.g., public S3)
+# Architecture
 
----
+![AWS Security Alerting Pipeline](diagram.png)
 
-## Stack
-
-| Category      | Technology                         |
-|---------------|------------------------------------|
-| IaC           | Terraform                          |
-| Detection     | CloudTrail, GuardDuty, AWS Config  |
-| Processing    | Lambda (Python)                    |
-| Alerting      | SNS, Slack                         |
-| Optional UI   | Flask receiver in Docker/K8s       |
-
----
 ## Alert Flow
 
-```bash
-
-GuardDuty/Config/EventBridge
+```text
+GuardDuty / AWS Config / EventBridge
         │
         ▼
        SNS
@@ -78,160 +32,61 @@ GuardDuty/Config/EventBridge
       Slack
 ```
 
-## Architecture
+---
 
-![AWS Security Alerting Pipeline](diagram.png)
+# Use Case
 
-1. CloudTrail or GuardDuty detects an event  
-2. EventBridge filters and routes the event  
-3. Lambda formats the alert and sends via SNS  
-4. Alerts go to email, Slack, or an external receiver
+The pipeline detects and alerts on events such as:
+
+- IAM user creation
+- Root login without MFA
+- GuardDuty findings (SSH brute-force, port scanning)
+- Non-compliant AWS Config resources (e.g. public S3 bucket)
+
+Example trigger:
+
+> Detect when a new IAM user is created (`CreateUser` event in AWS CloudTrail)
 
 ---
 
-## Project Structure
+# Tech Stack
 
-```bash
-terraform/ # Infrastructure as Code
-lambda/ # Lambda functions (Python)
-tests/ # Sample CloudTrail/GuardDuty events
-alert-receiver/ # Flask app (containerized)
-ansible/ # AWS CLI provisioning
-k8s/ # Kubernetes deployment manifests
-slack_alert_forwarder/ # Lambda function forwarding SNS alerts to Slack
+| Layer | Technology |
+|------|-------------|
+| Infrastructure as Code | Terraform |
+| Detection | CloudTrail, GuardDuty, AWS Config |
+| Processing | AWS Lambda (Python) |
+| Messaging | SNS |
+| Alerting | Slack |
+| Optional UI | Flask (Docker / Kubernetes) |
 
+---
+
+# Project Structure
+
+```text
+terraform/              Infrastructure as Code
+lambda/                 Lambda functions (Python)
+tests/                  Test events and unit tests
+alert-receiver/         Flask alert receiver (Docker)
+ansible/                Provisioning scripts
+k8s/                    Kubernetes manifests
+docs/                   Documentation and screenshots
+frontend/               Optional UI dashboard
 ```
 
-## 🔔 Slack Integration – Alert Example
+---
 
-This is a real example of a GuardDuty alert forwarded via AWS Lambda → SNS → Lambda → Slack.
-The forwarding is handled by the `slack_alert_forwarder` function subscribed to the `guardduty_alerts` SNS topic.
+# Author
 
+**Adam Wrona**  
+Aspiring DevOps / AWS Cloud Engineer
 
-![Slack Alert Example](docs/screenshots/slack_screenshot.png)
-
-## Frontend UI Preview
-
-This project includes an optional frontend in `/frontend` built with HTML, CSS (Bootstrap), and JS.
-
-Features:
-- Color-coded alert cards
-- Emoji for each state (ALARM/OK/WARNING)
-- Reload button
-- Clean and responsive design
-
-Open `frontend/index.html` in browser to preview alerts locally.
-
-![Frontend Preview](frontend/frontend-preview.png)
-
-## Detailed Setup & Features
-
-See [docs/DETAILS.md](docs/DETAILS.md) for:
-
-- Deployment instructions  
-- Sample test events  
-- Lambda test CLI commands  
-- Slack integration setup  
-- Roadmap and future improvements
+GitHub: https://github.com/cloudcr0w  
+LinkedIn: https://www.linkedin.com/in/adam-wrona-111ba728b
 
 ---
 
-### 🧩 CI/CD overview
-- 🧪 Python tests & lint (pytest, flake8, black)
-- ☁️ Terraform fmt/validate + tfsec + Checkov
-- 🐳 Docker build & Trivy image scan
-- 🔒 CodeQL SAST analysis
-- ⚙️ K8s manifests validation (kubeconform)
-- 🤖 Weekly dependabot updates
+# License
 
----
-## 🧪 Tests & CI Status
-
-| Pipeline | Status |
-|-----------|--------|
-| Python Tests | ![Python CI](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/ci-python.yml/badge.svg) |
-| Terraform Lint | ![IaC Security](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/iac-security.yml/badge.svg) |
-| CodeQL | ![CodeQL](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/codeql.yml/badge.svg) |
-
-All core Lambda functions are now covered by unit tests with mocked AWS services.
-
-## What I Learned
-
-- How to use Terraform to deploy a real security alerting pipeline  
-- How IAM, GuardDuty, EventBridge, Lambda, and SNS integrate  
-- How to log to CloudWatch and test Lambda manually  
-- Hands-on experience with GuardDuty in a personal project  
-- Basics of Docker and Kubernetes for alert receiver deployment
-
----
-## Why This Project?
-
-The AWS Security Alerting Pipeline was created to:
-- Gain hands-on experience with Terraform, Lambda, SNS, and security services
-- Build a real-world cloud monitoring & alerting use case
-- Demonstrate cloud infrastructure skills and DevSecOps thinking
-- Provide actionable Slack/email alerts on suspicious activities in near real-time
-
-## References
-
-This project was inspired and supported by the following resources:
-
-- AWS Documentation – [AWS Config](https://docs.aws.amazon.com/config/)
-- Terraform Registry – [aws_config_config_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_config_rule)
-- Real-time alerting tutorial by FreeCodeCamp
-- Flask documentation – [https://flask.palletsprojects.com/](https://flask.palletsprojects.com/)
-
-## Author
-
-**Adam Wrona** – aspiring DevOps / AWS Cloud Engineer  
-🔗 [LinkedIn](https://www.linkedin.com/in/adam-wrona-111ba728b) • [GitHub](https://github.com/cloudcr0w)
-
-_Last updated: July 3, 2025_
-
----
-
-
-## 🚧 TODO
-
-Planned improvements and features:
-
-- [x] 🎨 Add basic frontend dashboard (HTML + Bootstrap)
-- [x] 🧪 Add unit tests for Lambda functions (pytest)
-- [x] 🔁 Refactor Lambda folder for better test discovery and modularity
-- [ ] ☁️ Add CloudWatch Alarms for specific metrics (e.g., unauthorized API calls)
-- [ ] 📦 Deploy alert-receiver to ECS (Fargate) or EKS with proper Terraform setup
-- [x] 🔐 Integrate secrets manager for storing Slack webhook URL securely
-- [x] 📊 Add CloudWatch dashboard for visual monitoring
-- [ ] 🔄 Enable automatic rotation of Lambda access keys
-- [x] 🛠️ Implement CI/CD pipeline for infrastructure and Lambda (GitHub Actions)
-- [ ] 🌍 Add multi-region support
-- [ ] 🧩 Add additional EventBridge rules (e.g., for API Gateway abuse or EC2 activity)
-- [ ] 📁 Archive alerts to S3 for long-term storage & audit
-- [ ] 📖 Write a blog post or LinkedIn article describing project use case and learnings
-- [ ] 📬 Email alert fallback via SES
-- [ ] 🧠 AI-based alert prioritization (testowy NLP scoring w Lambda)
-- [ ] 🧼 Terraform remote state (S3 + DynamoDB lock)
-- [ ] 📦 Containerize Lambda runtime for advanced dependency isolation
-- [x] Slack alert forwarding via Lambda
-- [ ] 📥 Add `README-slack.md` with payload format & debugging steps
-- [x] Manual test publishing to SNS confirmed end-to-end
-
-## License
-
-[MIT](LICENSE)
-
----
-
-## Security Policy
-
-For vulnerability reports, please see [SECURITY.md](SECURITY.md)
-
-```markdown
-> "Trust me, I'm a Lambda."  
-> — this function, probably right before it timed out
-```
-
-```markdown
-> "Monitoring without alerts is just stalking your own infrastructure."  
-> — Unknown DevOps Philosopher
-```
+MIT
