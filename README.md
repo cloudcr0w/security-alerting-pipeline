@@ -1,23 +1,17 @@
 # AWS Security Alerting Pipeline
 
-![Built with anxiety](https://img.shields.io/badge/built%20with-anxiety-red)
-![Status](https://img.shields.io/badge/status-WIP-yellow)
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)
 ![AWS](https://img.shields.io/badge/Cloud-AWS-232F3E?logo=amazon-aws)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
-![Dockerized](https://img.shields.io/badge/containerized-yes-informational)
 ![Lambda](https://img.shields.io/badge/Compute-Lambda-orange?logo=aws-lambda)
 ![Slack Alerts](https://img.shields.io/badge/Alerts-Slack-4A154B?logo=slack)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![TODO](https://img.shields.io/badge/TODO-in%20progress-blueviolet)
-![Updated](https://img.shields.io/badge/last_update-Oct%202025-blue)
+
 ![CI](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/ci-python.yml/badge.svg)
 ![IaC Security](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/iac-security.yml/badge.svg)
 ![Docker Scan](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/docker-alert-receiver.yml/badge.svg)
 ![K8s Lint](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/k8s-lint.yml/badge.svg)
 ![CodeQL](https://github.com/cloudcr0w/security-alerting-pipeline/actions/workflows/codeql.yml/badge.svg)
-
 
   End-to-end real-time threat detection and alerting system built on AWS with Terraform and Python Lambda functions.
   Hands-on DevSecOps project showing real-time AWS security monitoring and alerting.
