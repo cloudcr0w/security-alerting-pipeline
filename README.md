@@ -61,6 +61,34 @@ Example trigger:
 | Optional UI | Flask (Docker / Kubernetes) |
 
 ---
+## Local Development
+
+Install dependencies:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+Run tests:
+
+```bash
+pytest -q --maxfail=1 --disable-warnings --cov=lambda_src
+```
+
+Run linter:
+
+```bash
+flake8 lambda_src tests
+```
+
+Format code:
+
+```bash
+black .
+```
+
+This allows reproducing the same checks locally that run in CI.
+---
 
 # Project Structure
 
